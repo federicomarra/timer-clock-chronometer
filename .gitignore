@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+#Mac junk files
+.DS_Store
+.idea

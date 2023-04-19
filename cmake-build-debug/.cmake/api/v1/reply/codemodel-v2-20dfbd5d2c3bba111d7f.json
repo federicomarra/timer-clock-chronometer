@@ -1,0 +1,148 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "test",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-test-Debug-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "test/lib/googletest",
+					"jsonFile" : "directory-test.lib.googletest-Debug-2169e56b01a564901515.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "test/lib/googletest",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "ElaboratoTimer",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "gtest",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ElaboratoTimer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ElaboratoTimer-Debug-721f52ddc7c9b821f2d9.json",
+					"name" : "ElaboratoTimer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-core-Debug-28bd291c591753291c42.json",
+					"name" : "core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gtest::@838963ba4e42fda1c95a",
+					"jsonFile" : "target-gtest-Debug-e7726c917cca52b450e8.json",
+					"name" : "gtest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gtest_main::@838963ba4e42fda1c95a",
+					"jsonFile" : "target-gtest_main-Debug-e3975c04429a3c39be5f.json",
+					"name" : "gtest_main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "runAllTests::@36f028580bb02cc8272a",
+					"jsonFile" : "target-runAllTests-Debug-3d785893a447e41c763f.json",
+					"name" : "runAllTests",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug",
+		"source" : "/Users/federico/Documents/GitHub/timer-clock-chronometer"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
