@@ -1,4 +1,4 @@
-/Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug/CMakeFiles/ElaboratoTimer.dir
+/Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug/CMakeFiles/timer-clock-chronometer.dir
 /Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug/CMakeFiles/core.dir
 /Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

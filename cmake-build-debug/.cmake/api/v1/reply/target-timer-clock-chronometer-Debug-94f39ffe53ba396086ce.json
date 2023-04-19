@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "ElaboratoTimer"
+			"path" : "timer-clock-chronometer"
 		}
 	],
 	"backtrace" : 1,
@@ -76,7 +76,7 @@
 			"id" : "core::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "ElaboratoTimer::@6890427a1f51a3e7e1df",
+	"id" : "timer-clock-chronometer::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -107,8 +107,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "ElaboratoTimer",
-	"nameOnDisk" : "ElaboratoTimer",
+	"name" : "timer-clock-chronometer",
+	"nameOnDisk" : "timer-clock-chronometer",
 	"paths" : 
 	{
 		"build" : ".",

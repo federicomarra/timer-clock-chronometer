@@ -20,7 +20,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						4
 					]
 				},
 				{
@@ -39,7 +39,7 @@
 					"source" : "test",
 					"targetIndexes" : 
 					[
-						4
+						3
 					]
 				},
 				{
@@ -54,8 +54,8 @@
 					"source" : "test/lib/googletest",
 					"targetIndexes" : 
 					[
-						2,
-						3
+						1,
+						2
 					]
 				}
 			],
@@ -72,11 +72,11 @@
 						0,
 						1
 					],
-					"name" : "ElaboratoTimer",
+					"name" : "timer-clock-chronometer",
 					"targetIndexes" : 
 					[
 						0,
-						1,
+						3,
 						4
 					]
 				},
@@ -89,20 +89,13 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
-						3
+						1,
+						2
 					]
 				}
 			],
 			"targets" : 
 			[
-				{
-					"directoryIndex" : 0,
-					"id" : "ElaboratoTimer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ElaboratoTimer-Debug-721f52ddc7c9b821f2d9.json",
-					"name" : "ElaboratoTimer",
-					"projectIndex" : 0
-				},
 				{
 					"directoryIndex" : 0,
 					"id" : "core::@6890427a1f51a3e7e1df",
@@ -129,6 +122,13 @@
 					"id" : "runAllTests::@36f028580bb02cc8272a",
 					"jsonFile" : "target-runAllTests-Debug-3d785893a447e41c763f.json",
 					"name" : "runAllTests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "timer-clock-chronometer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-timer-clock-chronometer-Debug-94f39ffe53ba396086ce.json",
+					"name" : "timer-clock-chronometer",
 					"projectIndex" : 0
 				}
 			]
