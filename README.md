@@ -1,39 +1,7 @@
 # timer-clock-chronometer
- Laboratory Programmation C++ Unifi
+### Programmation Laboratory  C++ Unifi
 
-C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
-
-## INSTRUCTIONS
-
-### TIMER
-S : start
-
-T : stop
-
-R : reset
-
-W : change view
-
-UP : +1s
-
-DOWN : -1s
-
-### CLOCK 
-K : change view
-
-### CHRONOMETER
-V : start
-
-SPACE : stop
-
-B : reset
-
-N : change view
-
-
-
-## EXIT
-ESC : exit
+##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
 
 
 | INSTRUCTION | TIMER | CLOCK | CHRONOMETER |
@@ -45,3 +13,5 @@ ESC : exit
 | +1s         |  UP   |       |             |
 | -1s         | DOWN  |       |             |
 | exit        |  ESC  |  ESC  |     ESC     |
+
+![GitHub repo size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer?color=55&label=repo%20size&logo=55&logoColor=55%20B)
