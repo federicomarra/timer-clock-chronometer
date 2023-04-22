@@ -179,6 +179,6 @@ void Display::printFooter() {
     mvwprintw(instruction, 1, 1, "CLOCK | K : change view");
     mvwprintw(instruction, 2, 1, "CHRONO | V : start, SPACE: stop, B : reset, N : change view");
     mvwprintw(instruction, 4, 1, "ESC : exit");
-    mvwprintw(instruction, 6, 53, "Credit: Kevin Maggi");
+    mvwprintw(instruction, 6, 53, "Credit: Federico Marra");
     wrefresh(instruction);
 }
