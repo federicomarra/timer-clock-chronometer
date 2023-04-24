@@ -26,7 +26,7 @@ void Display::init() {
     timerWin = newwin(height, width, (termHeight-height*2 - 2)/2, (termWidth - width*3 + 2)/2);
     clockWin = newwin(height, width, (termHeight-height*2 - 2)/2, (termWidth - width*3 + 2)/2 + width - 1);
     chronoWin = newwin(height, width, (termHeight-height*2 - 2)/2, (termWidth - width*3 +2)/2 + 2*width - 2);
-    instruction = newwin(height, width*3-2, (termHeight-height*2 - 2)/2 + height + 2, (termWidth - width*3 + 2)/2);
+    instruction = newwin(height*2, width*3-2, (termHeight-height*2 - 2)/2 + height + 2, (termWidth - width*3 + 2)/2);
     refresh();
 
     do{
@@ -69,10 +69,11 @@ void Display::update() {
     mvwprintw(chronoWin, 4, (width-chrTime.length())/2, &chrTime[0]);
     mvwprintw(chronoWin, 6, (width-chrMem.length())/2, &chrMem[0]);
     if(help){
-        printFooter();
+        printFooterEn();
     }
     else{
         mvwprintw(instruction, 0, 1, "Press F1 for help");
+        mvwprintw(instruction, 1, 1, "Premi F2 per l'aiuto");
     }
 
     wrefresh(timerWin);
@@ -100,19 +101,24 @@ void Display::checkKB() {
                 timer.setDuration(timer.getDuration() - 1);
             }
             break;
-        case '1':
+        case KEY_RIGHT:
             if(!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 10);
             }
             break;
-        case '2':
+        case KEY_LEFT:
             if(!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 10);
             }
             break;
-        case '6':
+        case '1':
             if(!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 60 );
+            }
+            break;
+        case '2':
+            if(!timer.isRunning()) {
+                timer.setDuration(timer.getDuration() + 120 );
             }
             break;
         case '7':
@@ -120,7 +126,7 @@ void Display::checkKB() {
                 timer.setDuration(timer.getDuration() - 60);
             }
             break;
-        case '9':
+        case '6':
             if(!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 3600);
             }
@@ -134,7 +140,10 @@ void Display::checkKB() {
             try {
                 timer.startTimer();
             }
-            catch (bad_function_call e){}
+            catch (bad_function_call e){
+                printf("Timer not set");
+                beep();
+            }
             break;
         case 't':
             timer.stopTimer();
@@ -163,7 +172,16 @@ void Display::checkKB() {
         case KEY_F(1):
             if (!help){
                 help = true;
-                printFooter();
+                printFooterEn();
+            }
+            else{
+                help = false;
+            }
+            break;
+        case KEY_F(2):
+            if (!help){
+                help = true;
+                printFooterIt();
             }
             else{
                 help = false;
@@ -174,11 +192,66 @@ void Display::checkKB() {
     }
 }
 
-void Display::printFooter() {
+/*
+void Display::printFooterEn() {
     mvwprintw(instruction, 0, 1, "TIMER | S : start, T : stop, R : reset, W : view, UP : +1s, DOWN : -1s");
-    mvwprintw(instruction, 1, 1, "CLOCK | K : change view");
+    mvwprintw(instruction, 1, 1, "CLOCK |                        ");
+    mvwprintw(instruction, 1, 41, "K : view");
     mvwprintw(instruction, 2, 1, "CHRONO | V : start, SPACE: stop, B : reset, N : change view");
     mvwprintw(instruction, 4, 1, "ESC : exit");
-    mvwprintw(instruction, 6, 53, "Credit: Federico Marra");
+    mvwprintw(instruction, 6, 51, "Credit: Federico Marra");
+    wrefresh(instruction);
+}
+
+void Display::printFooterIt() {
+    mvwprintw(instruction, 0, 1, "TIMER | S : inizia, T : stop, R : reset, W : view, UP : +1s, DOWN : -1s");
+    mvwprintw(instruction, 1, 1, "CLOCK | ");
+    mvwprintw(instruction, 1, 41, "K : view");
+    mvwprintw(instruction, 2, 1, "CHRONO | V : start, SPACE: stop, B : reset, N : change view");
+    mvwprintw(instruction, 4, 1, "ESC : exit");
+    mvwprintw(instruction, 6, 51, "Credit: Federico Marra");
+    wrefresh(instruction);
+}
+*/
+
+
+
+void Display::printFooterEn() {
+    mvwprintw(instruction,  0, 1, "| INSTRUCTION | TIMER | CLOCK | CHRONOMETER |");
+    mvwprintw(instruction,  1, 1, "|    exit     |  ESC  |  ESC  |     ESC     |");
+    mvwprintw(instruction,  2, 1, "|    start    |   S   |       |      V      |");
+    mvwprintw(instruction,  3, 1, "|    stop     |   T   |       |    SPACE    |");
+    mvwprintw(instruction,  4, 1, "|    reset    |   R   |       |      B      |");
+    mvwprintw(instruction,  5, 1, "| change view |   W   |   K   |      N      |");
+    mvwprintw(instruction,  6, 1, "|    +  1 s   |  UP   |       |             |");
+    mvwprintw(instruction,  7, 1, "|    -  1 s   | DOWN  |       |             |");
+    mvwprintw(instruction,  8, 1, "|    + 10 s   | RIGHT |       |             |");
+    mvwprintw(instruction,  9, 1, "|    - 10 s   | LEFT  |       |             |");
+    mvwprintw(instruction, 10, 1, "|    +  1 m   |   1   |       |             |");
+    mvwprintw(instruction, 11, 1, "|    +  2 m   |   2   |       |             |");
+    mvwprintw(instruction, 12, 1, "|    -  1 m   |   7   |       |             |");
+    mvwprintw(instruction, 13, 1, "|    +  1 h   |   6   |       |             |");
+    mvwprintw(instruction, 14, 1, "|    -  1 h   |   0   |       |             |");
+    mvwprintw(instruction, 16, 51, "Credit: Federico Marra");
+    wrefresh(instruction);
+}
+
+void Display::printFooterIt() {
+    mvwprintw(instruction,  0, 1, "| ISTRUZIONI | TIMER | OROLOGIO | CRONOMETRO |");
+    mvwprintw(instruction,  1, 1, "|    uscita     |  ESC  |  ESC  |     ESC     |");
+    mvwprintw(instruction,  2, 1, "|    inizio    |   S   |       |      V      |");
+    mvwprintw(instruction,  3, 1, "|    ferma     |   T   |       |    SPACE    |");
+    mvwprintw(instruction,  4, 1, "|    resetta    |   R   |       |      B      |");
+    mvwprintw(instruction,  5, 1, "| cambia vista |   W   |   K   |      N      |");
+    mvwprintw(instruction,  6, 1, "|    +  1 s   |  UP   |       |             |");
+    mvwprintw(instruction,  7, 1, "|    -  1 s   | DOWN  |       |             |");
+    mvwprintw(instruction,  8, 1, "|    + 10 s   | RIGHT |       |             |");
+    mvwprintw(instruction,  9, 1, "|    - 10 s   | LEFT  |       |             |");
+    mvwprintw(instruction, 10, 1, "|    +  1 m   |   1   |       |             |");
+    mvwprintw(instruction, 11, 1, "|    +  2 m   |   2   |       |             |");
+    mvwprintw(instruction, 12, 1, "|    -  1 m   |   7   |       |             |");
+    mvwprintw(instruction, 13, 1, "|    +  1 h   |   6   |       |             |");
+    mvwprintw(instruction, 14, 1, "|    -  1 h   |   0   |       |             |");
+    mvwprintw(instruction, 16, 51, "Crediti: Federico Marra");
     wrefresh(instruction);
 }

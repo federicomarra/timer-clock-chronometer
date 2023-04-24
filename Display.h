@@ -17,7 +17,9 @@ public:
 
     void checkKB();
 
-    void printFooter();
+    void printFooterEn();
+
+    void printFooterIt();
 
 private:
     Timer timer;
