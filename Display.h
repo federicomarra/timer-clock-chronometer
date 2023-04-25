@@ -32,7 +32,7 @@ private:
     WINDOW * instruction = nullptr;
     int height = 0, width = 0, termWidth = 0, termHeight = 0;
     string tmrTime, chrTime, chrMem, time, date;
-    bool help;
+    bool help, ita;
 
     bool terminate;
 };

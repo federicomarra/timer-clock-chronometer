@@ -1,5 +1,6 @@
 #include "Display.h"
 #include <ncurses.h>
+#include <locale.h>
 #include <functional>
 
 Display::Display() {
@@ -8,6 +9,7 @@ Display::Display() {
     chrono = Chronometer();
     terminate = false;
     help = false;
+    ita = false;
 }
 
 void Display::init() {
@@ -47,9 +49,15 @@ void Display::update() {
     wborder(timerWin, 0, 0, 0, 0, 0, 0, 0, 0);
     wborder(clockWin, 0, 0, 0, 0, ACS_TTEE, ACS_TTEE, ACS_BTEE, ACS_BTEE);
     wborder(chronoWin, 0, 0, 0, 0, 0, 0, 0, 0);
-    mvwprintw(timerWin, 2, 10, "TIMER");
-    mvwprintw(clockWin, 2, 10, "CLOCK");
-    mvwprintw(chronoWin, 2, 7, "CHRONOMETER");
+    if(!ita) {
+        mvwprintw(timerWin, 2, 10, "TIMER");
+        mvwprintw(clockWin, 2, 10, "CLOCK");
+        mvwprintw(chronoWin, 2, 7, "CHRONOMETER");
+    }else{
+        mvwprintw(timerWin, 2, 10, "TIMER");
+        mvwprintw(clockWin, 2, 8, "OROLOGIO");
+        mvwprintw(chronoWin, 2, 8, "CRONOMETRO");
+    }
 
     if(timer.getDuration() == 0){
         beep();
@@ -69,11 +77,19 @@ void Display::update() {
     mvwprintw(chronoWin, 4, (width-chrTime.length())/2, &chrTime[0]);
     mvwprintw(chronoWin, 6, (width-chrMem.length())/2, &chrMem[0]);
     if(help){
-        printFooterEn();
+        if(ita) {
+            printFooterIt();
+        }else{printFooterEn();}
+
     }
     else{
-        mvwprintw(instruction, 0, 1, "Press F1 for help");
-        mvwprintw(instruction, 1, 1, "Premi F2 per l'aiuto");
+        if(!ita) {
+            mvwprintw(instruction, 0, 1, "Press L for italian");
+            mvwprintw(instruction, 1, 1, "Press F1 for help");
+        }else {
+            mvwprintw(instruction, 0, 1, "Premi L per l'inglese");
+            mvwprintw(instruction, 1, 1, "Premi F1 per l'aiuto");
+        }
     }
 
     wrefresh(timerWin);
@@ -136,7 +152,7 @@ void Display::checkKB() {
                 timer.setDuration(timer.getDuration() - 3600);
             }
             break;
-        case 's':
+        case 10:            //ENTER KEY
             try {
                 timer.startTimer();
             }
@@ -145,7 +161,7 @@ void Display::checkKB() {
                 beep();
             }
             break;
-        case 't':
+        case 'p':
             timer.stopTimer();
             break;
         case 'r':
@@ -167,21 +183,25 @@ void Display::checkKB() {
             chrono.setViewMode(chrono.getViewMode()+1);
             break;
         case 'k':
-            clock.setViewMode(clock.getViewMode()+1);
+            clock.setViewMode(clock.getViewMode()+1, ita);
+            break;
+        case 'l':
+            if(ita){
+                ita = false;
+            }else{
+                ita = true;
+            }
+            clock.setViewMode(clock.getViewMode(), ita);
             break;
         case KEY_F(1):
             if (!help){
                 help = true;
-                printFooterEn();
-            }
-            else{
-                help = false;
-            }
-            break;
-        case KEY_F(2):
-            if (!help){
-                help = true;
-                printFooterIt();
+                if (!ita) {
+                    printFooterEn();
+                } else {
+                    printFooterIt();
+                }
+                clock.setViewMode(clock.getViewMode(), ita);
             }
             else{
                 help = false;
@@ -217,41 +237,51 @@ void Display::printFooterIt() {
 
 
 void Display::printFooterEn() {
+    setlocale(LC_ALL, "");  // Set the locale to support Unicode characters
     mvwprintw(instruction,  0, 1, "| INSTRUCTION | TIMER | CLOCK | CHRONOMETER |");
     mvwprintw(instruction,  1, 1, "|    exit     |  ESC  |  ESC  |     ESC     |");
     mvwprintw(instruction,  2, 1, "|    start    |   S   |       |      V      |");
     mvwprintw(instruction,  3, 1, "|    stop     |   T   |       |    SPACE    |");
     mvwprintw(instruction,  4, 1, "|    reset    |   R   |       |      B      |");
     mvwprintw(instruction,  5, 1, "| change view |   W   |   K   |      N      |");
+    /*
+    mvwprintw(instruction,  6, 1, "|    +  1 s   |   ↑   |       |             |");
+    mvwprintw(instruction,  7, 1, "|    -  1 s   |   ↓   |       |             |");
+    mvwprintw(instruction,  8, 1, "|    + 10 s   |   →   |       |             |");
+    mvwprintw(instruction,  9, 1, "|    - 10 s   |   ←   |       |             |");
+    */
     mvwprintw(instruction,  6, 1, "|    +  1 s   |  UP   |       |             |");
     mvwprintw(instruction,  7, 1, "|    -  1 s   | DOWN  |       |             |");
     mvwprintw(instruction,  8, 1, "|    + 10 s   | RIGHT |       |             |");
     mvwprintw(instruction,  9, 1, "|    - 10 s   | LEFT  |       |             |");
+
     mvwprintw(instruction, 10, 1, "|    +  1 m   |   1   |       |             |");
     mvwprintw(instruction, 11, 1, "|    +  2 m   |   2   |       |             |");
     mvwprintw(instruction, 12, 1, "|    -  1 m   |   7   |       |             |");
     mvwprintw(instruction, 13, 1, "|    +  1 h   |   6   |       |             |");
     mvwprintw(instruction, 14, 1, "|    -  1 h   |   0   |       |             |");
-    mvwprintw(instruction, 16, 51, "Credit: Federico Marra");
+    mvwprintw(instruction, 16, 50, " Credit: Federico Marra");
     wrefresh(instruction);
 }
 
 void Display::printFooterIt() {
-    mvwprintw(instruction,  0, 1, "| ISTRUZIONI | TIMER | OROLOGIO | CRONOMETRO |");
-    mvwprintw(instruction,  1, 1, "|    uscita     |  ESC  |  ESC  |     ESC     |");
-    mvwprintw(instruction,  2, 1, "|    inizio    |   S   |       |      V      |");
-    mvwprintw(instruction,  3, 1, "|    ferma     |   T   |       |    SPACE    |");
-    mvwprintw(instruction,  4, 1, "|    resetta    |   R   |       |      B      |");
-    mvwprintw(instruction,  5, 1, "| cambia vista |   W   |   K   |      N      |");
-    mvwprintw(instruction,  6, 1, "|    +  1 s   |  UP   |       |             |");
-    mvwprintw(instruction,  7, 1, "|    -  1 s   | DOWN  |       |             |");
-    mvwprintw(instruction,  8, 1, "|    + 10 s   | RIGHT |       |             |");
-    mvwprintw(instruction,  9, 1, "|    - 10 s   | LEFT  |       |             |");
-    mvwprintw(instruction, 10, 1, "|    +  1 m   |   1   |       |             |");
-    mvwprintw(instruction, 11, 1, "|    +  2 m   |   2   |       |             |");
-    mvwprintw(instruction, 12, 1, "|    -  1 m   |   7   |       |             |");
-    mvwprintw(instruction, 13, 1, "|    +  1 h   |   6   |       |             |");
-    mvwprintw(instruction, 14, 1, "|    -  1 h   |   0   |       |             |");
-    mvwprintw(instruction, 16, 51, "Crediti: Federico Marra");
+    setlocale(LC_ALL, "");  // Set the locale to support Unicode characters
+    mvwprintw(instruction,  0, 1, "________________________________________________");
+    mvwprintw(instruction,  1, 1, "|  ISTRUZIONI  | TIMER | OROLOGIO | CRONOMETRO |");
+    mvwprintw(instruction,  2, 1, "|    uscita    |  ESC  |   ESC    |     ESC    |");
+    mvwprintw(instruction,  3, 1, "|    inizio    |   S   |          |      V     |");
+    mvwprintw(instruction,  4, 1, "|    ferma     |   T   |          |    SPACE   |");
+    mvwprintw(instruction,  5, 1, "|   resetta    |   R   |          |      B     |");
+    mvwprintw(instruction,  6, 1, "| cambia vista |   W   |    K     |      N     |");
+    mvwprintw(instruction,  7, 1, "|    +  1 s    |  UP   |          |            |");
+    mvwprintw(instruction,  8, 1, "|    -  1 s    | DOWN  |          |            |");
+    mvwprintw(instruction,  9, 1, "|    + 10 s    | RIGHT |          |            |");
+    mvwprintw(instruction, 10, 1, "|    - 10 s    | LEFT  |          |            |");
+    mvwprintw(instruction, 11, 1, "|    +  1 m    |   1   |          |            |");
+    mvwprintw(instruction, 12, 1, "|    +  2 m    |   2   |          |            |");
+    mvwprintw(instruction, 13, 1, "|    -  1 m    |   7   |          |            |");
+    mvwprintw(instruction, 14, 1, "|    +  1 h    |   6   |          |            |");
+    mvwprintw(instruction, 15, 1, "|    -  1 h    |   0   |          |            |");
+    mvwprintw(instruction, 17, 50, "Crediti: Federico Marra");
     wrefresh(instruction);
 }

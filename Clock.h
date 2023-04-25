@@ -13,10 +13,11 @@ public:
     string getDate() const;
 
     int getViewMode() const;
-    void setViewMode(int vm);
+    void setViewMode(int vm, bool it);
 
 private:
     int viewMode;
+    bool ita;
 };
 
 
