@@ -1,7 +1,3 @@
-//
-// Created by kevin on 09/07/19.
-//
-
 #include "gtest/gtest.h"
 
 #include "../Timer.h"
