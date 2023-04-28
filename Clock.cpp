@@ -1,6 +1,6 @@
 #include <string>
 #include "Clock.h"
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 
@@ -12,20 +12,20 @@ string Clock::getTime() const {
     time_t now = time(0);
     tm date = *localtime(&now);
     string s, temp;
-    switch(viewMode){
-        case 2:
+    switch (viewMode) {
+        case 2:     // hh:mm:ss
             temp = to_string(date.tm_hour);
-            s += (temp.length() == 1 ? ('0'+temp) : temp);
+            s += (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_min);
-            s += ":" + (temp.length() == 1 ? ('0'+temp) : temp);
+            s += ":" + (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_sec);
-            s += " :" + (temp.length() == 1 ? ('0'+temp) : temp);
+            s += ":" + (temp.length() == 1 ? ('0' + temp) : temp);
             break;
-        default:
+        default:    // hh:mm
             temp = to_string(date.tm_hour);
-            s += (temp.length() == 1 ? ('0'+temp) : temp);
+            s += (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_min);
-            s += ":" + (temp.length() == 1 ? ('0'+temp) : temp);
+            s += ":" + (temp.length() == 1 ? ('0' + temp) : temp);
     }
     return s;
 }
@@ -34,17 +34,17 @@ string Clock::getDate() const {
     time_t now = time(0);
     tm date = *localtime(&now);
     string s, temp;
-    switch(viewMode){
-        case 1:
-            s += "'" + to_string(date.tm_year%100);
+    switch (viewMode) {
+        case 1:    // yyyy-mm-dd
+            s += to_string(1900 + date.tm_year);
+            temp = to_string(date.tm_mon + 1);
+            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_mday);
-            s += "/" + (temp.length() == 1 ? ('0'+temp) : temp);
-            temp = to_string(date.tm_mon+1);
-            s += "/" + (temp.length() == 1 ? ('0'+temp) : temp);
+            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
             break;
-        case 2:
-            if (ita){
-                switch (date.tm_wday){
+        case 2:   // wday dd mmm yyyy
+            if (ita) {
+                switch (date.tm_wday) {
                     case 0:
                         s += "Dom";
                         break;
@@ -68,8 +68,8 @@ string Clock::getDate() const {
                         break;
                 }
                 temp = to_string(date.tm_mday);
-                s += ' ' + (temp.length() == 1 ? ('0'+temp) : temp) + ' ';
-                switch (date.tm_mon){
+                s += ' ' + (temp.length() == 1 ? ('0' + temp) : temp) + ' ';
+                switch (date.tm_mon) {
                     case 0:
                         s += "Gen";
                         break;
@@ -108,8 +108,8 @@ string Clock::getDate() const {
                         break;
                 }
                 s += ' ' + to_string(1900 + date.tm_year);
-            } else{
-                switch (date.tm_wday){
+            } else {
+                switch (date.tm_wday) {
                     case 0:
                         s += "Sun";
                         break;
@@ -133,8 +133,8 @@ string Clock::getDate() const {
                         break;
                 }
                 temp = to_string(date.tm_mday);
-                s += ' ' + (temp.length() == 1 ? ('0'+temp) : temp) + ' ';
-                switch (date.tm_mon){
+                s += ' ' + (temp.length() == 1 ? ('0' + temp) : temp) + ' ';
+                switch (date.tm_mon) {
                     case 0:
                         s += "Jan";
                         break;
@@ -175,12 +175,12 @@ string Clock::getDate() const {
                 s += ' ' + to_string(1900 + date.tm_year);
             }
             break;
-        default:
+        default:    // dd/mm/'yy
             temp = to_string(date.tm_mday);
-            s += temp.length() == 1 ? ('0'+temp) : temp;
-            temp = to_string(date.tm_mon+1);
-            s += "/" + (temp.length() == 1 ? ('0'+temp) : temp);
-            s += "/'" + to_string(date.tm_year%100);
+            s += temp.length() == 1 ? ('0' + temp) : temp;
+            temp = to_string(date.tm_mon + 1);
+            s += "/" + (temp.length() == 1 ? ('0' + temp) : temp);
+            s += "/'" + to_string(date.tm_year % 100);
     }
     return s;
 }
@@ -190,7 +190,7 @@ int Clock::getViewMode() const {
 }
 
 void Clock::setViewMode(int vm, bool it) {
-    viewMode = vm%3;
-    ita=it;
+    viewMode = vm % 3;
+    ita = it;
 }
 
