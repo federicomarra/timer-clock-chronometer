@@ -1,5 +1,5 @@
-#ifndef ELABORATOTIMER_DISPLAY_H
-#define ELABORATOTIMER_DISPLAY_H
+#ifndef TIMER_CLOCK_CHRONOMETER_DISPLAY_H
+#define TIMER_CLOCK_CHRONOMETER_DISPLAY_H
 
 
 #include "Timer.h"
@@ -24,10 +24,10 @@ private:
     Clock clock;
     Chronometer chrono;
 
-    WINDOW * timerWin = nullptr;
-    WINDOW * clockWin = nullptr;
-    WINDOW * chronoWin = nullptr;
-    WINDOW * instruction = nullptr;
+    WINDOW *timerWin = nullptr;
+    WINDOW *clockWin = nullptr;
+    WINDOW *chronoWin = nullptr;
+    WINDOW *instruction = nullptr;
     int height = 0, width = 0, termWidth = 0, termHeight = 0;
     string tmrTime, chrTime, chrMem, time, date;
     bool help, ita;
@@ -36,4 +36,4 @@ private:
 };
 
 
-#endif //ELABORATOTIMER_DISPLAY_H
+#endif //TIMER_CLOCK_CHRONOMETER_DISPLAY_H

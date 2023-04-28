@@ -3,7 +3,6 @@
 #include <math.h>
 #include <functional>
 #include <string>
-#include <ncurses.h>
 
 using namespace std;
 using namespace std::chrono;

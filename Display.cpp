@@ -1,7 +1,7 @@
 #include "Display.h"
 #include <ncurses.h>
-#include <locale.h>
 #include <functional>
+#include <locale.h>
 
 Display::Display() {
     timer = Timer();
@@ -106,52 +106,52 @@ void Display::update() {
 void Display::checkKB() {
     int ch = getch();
 
-    switch(ch){
-        case 27:         //exit
+    switch (ch) {
+        case 27:        // ESC key ~ exit
             terminate = true;
             break;
         case KEY_UP:    // +1s
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 1);
             }
             break;
         case KEY_DOWN:  // -1s
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 1);
             }
             break;
         case KEY_RIGHT: // +10s
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 10);
             }
             break;
         case KEY_LEFT:  // -10s
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 10);
             }
             break;
         case '1':       // +1m
-            if(!timer.isRunning()) {
-                timer.setDuration(timer.getDuration() + 60 );
+            if (!timer.isRunning()) {
+                timer.setDuration(timer.getDuration() + 60);
             }
             break;
         case '2':       // +2m
-            if(!timer.isRunning()) {
-                timer.setDuration(timer.getDuration() + 120 );
+            if (!timer.isRunning()) {
+                timer.setDuration(timer.getDuration() + 120);
             }
             break;
         case '7':       // -1m
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 60);
             }
             break;
         case '6':       // +1h
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() + 3600);
             }
             break;
         case '0':       // -1h
-            if(!timer.isRunning()) {
+            if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 3600);
             }
             break;
@@ -159,7 +159,7 @@ void Display::checkKB() {
             try {
                 timer.startTimer();
             }
-            catch (bad_function_call e){
+            catch (bad_function_call e) {
                 printf("Timer not set");
                 beep();
             }
@@ -172,7 +172,7 @@ void Display::checkKB() {
             timer.stopTimer();
             break;
         case 'w':       // change timer view mode
-            timer.setViewMode(timer.getViewMode()+1);
+            timer.setViewMode(timer.getViewMode() + 1);
             break;
         case 'v':       // start chrono
             chrono.startChrono();
@@ -184,10 +184,10 @@ void Display::checkKB() {
             chrono.resetChrono();
             break;
         case 'n':       // change chrono view mode
-            chrono.setViewMode(chrono.getViewMode()+1);
+            chrono.setViewMode(chrono.getViewMode() + 1);
             break;
         case 'k':       // change clock view mode
-            clock.setViewMode(clock.getViewMode()+1, ita);
+            clock.setViewMode(clock.getViewMode() + 1, ita);
             break;
         case 'l':       // change language
             if (ita) {
@@ -197,11 +197,10 @@ void Display::checkKB() {
             }
             clock.setViewMode(clock.getViewMode(), ita);
             break;
-        case KEY_F(1):  // help
+        case KEY_F(1):  // show help
             if (!help) {
                 help = true;
                 printFooter();
-                clock.setViewMode(clock.getViewMode(), ita);
             } else {
                 help = false;
             }
@@ -213,7 +212,7 @@ void Display::checkKB() {
 
 
 void Display::printFooter() {   // no unicode arrows
-    mvwprintw(instruction,      0, 1, "_________________________________________________");
+    mvwprintw(instruction, 0, 1, "_________________________________________________");
     if (!ita) {
         mvwprintw(instruction,  1, 1, "| INSTRUCTIONS | TIMER |  CLOCK   | CHRONOMETER |");
         mvwprintw(instruction,  2, 1, "|     exit     |  ESC  |   ESC    |     ESC     |");
@@ -252,7 +251,8 @@ void Display::printFooter() {   // no unicode arrows
     wrefresh(instruction);
 }
 
-/*
+/* TRIES TO PRINT UNICODE ARROWS, BUT IT DOESN'T WORK
+
 void Display::printFooter() {   // unicode arrows
     setlocale(LC_ALL, "");      // Set the locale to support Unicode characters
     wchar_t* upArrow = L"\u2191";

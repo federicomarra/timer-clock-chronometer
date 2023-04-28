@@ -1,5 +1,6 @@
-#ifndef ELABORATOTIMER_CLOCK_H
-#define ELABORATOTIMER_CLOCK_H
+#ifndef TIMER_CLOCK_CHRONOMETER_CLOCK_H
+#define TIMER_CLOCK_CHRONOMETER_CLOCK_H
+
 
 #include <string>
 
@@ -10,9 +11,11 @@ public:
     Clock();
 
     string getTime() const;
+
     string getDate() const;
 
     int getViewMode() const;
+
     void setViewMode(int vm, bool it);
 
 private:
@@ -21,4 +24,4 @@ private:
 };
 
 
-#endif //ELABORATOTIMER_CLOCK_H
+#endif //TIMER_CLOCK_CHRONOMETER_CLOCK_H

@@ -1,5 +1,5 @@
-#ifndef ELABORATOTIMER_TIMER_H
-#define ELABORATOTIMER_TIMER_H
+#ifndef TIMER_CLOCK_CHRONOMETER_TIMER_H
+#define TIMER_CLOCK_CHRONOMETER_TIMER_H
 
 #include <chrono>
 #include <exception>
@@ -15,16 +15,21 @@ public:
     const time_point<steady_clock> &getStart() const;
 
     bool setDuration(unsigned int seconds);
+
     int getDuration();
+
     string getDurationString();
 
     bool isRunning() const;
 
     int getViewMode() const;
+
     void setViewMode(int vm);
 
     bool startTimer();
+
     bool stopTimer();
+
     void resetTimer();
 
 private:
@@ -36,4 +41,5 @@ private:
     static const int secPerDay, secPerHour, secPerMin;
 };
 
-#endif //ELABORATOTIMER_TIMER_H
+
+#endif //TIMER_CLOCK_CHRONOMETER_TIMER_H

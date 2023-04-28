@@ -1,5 +1,6 @@
-#ifndef ELABORATOTIMER_CHRONOMETER_H
-#define ELABORATOTIMER_CHRONOMETER_H
+#ifndef TIMER_CLOCK_CHRONOMETER_CHRONOMETER_H
+#define TIMER_CLOCK_CHRONOMETER_CHRONOMETER_H
+
 
 #include <chrono>
 #include <string>
@@ -14,6 +15,7 @@ public:
     const time_point<steady_clock> &getStart() const;
 
     string getTimeString() const;
+
     int getTime() const;
 
     string getMemoryString() const;
@@ -21,10 +23,13 @@ public:
     bool isRunning() const;
 
     int getViewMode() const;
+
     void setViewMode(int vm);
 
     bool startChrono();
+
     bool stopChrono();
+
     void resetChrono();
 
 private:
@@ -40,4 +45,4 @@ private:
 };
 
 
-#endif //ELABORATOTIMER_CHRONOMETER_H
+#endif //TIMER_CLOCK_CHRONOMETER_CHRONOMETER_H
