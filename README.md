@@ -13,7 +13,7 @@ Press  `L`  to switch language between English and Italian.
 
 Press `ESC` to exit.
 
-Press `F1`  to help.
+Press `H`  to help.
 
 | INSTRUCTIONS | TIMER | CLOCK | CHRONOMETER |
 |:------------:|:-----:|:-----:|:-----------:|
@@ -30,6 +30,18 @@ Press `F1`  to help.
 |    -  1 m    |  `7`  |       |             |
 |    +  1 h    |  `6`  |       |             |
 |    -  1 h    |  `0`  |       |             |
+
+## Timer
+
+
+
+## Clock
+
+
+
+## Chronometer
+
+
 
 ## MIT License
 
