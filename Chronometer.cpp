@@ -91,12 +91,12 @@ string Chronometer::stringify(int deciseconds) const {
     switch (viewMode) {
         case 1:
             if (hours) {
-                s = s + to_string(hours) + " h, ";
+                s += to_string(hours) + " h, ";
             }
             if (hours || minutes) {
-                s = s + to_string(minutes) + " m, ";
+                s += to_string(minutes) + " m, ";
             }
-            s = s + to_string(seconds) + "." + to_string(decisecs) + " s";
+            s += to_string(seconds) + "." + to_string(decisecs) + " s";
             break;
         case 2:
             s = to_string(hours);
