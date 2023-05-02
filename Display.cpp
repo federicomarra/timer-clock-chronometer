@@ -92,14 +92,14 @@ void Display::update() {
             mvwprintw(instruction, 1, width / 3, "Press  L  to switch language between English and Italian");
             mvwprintw(instruction, 2, width / 3, "Press ESC to exit");
             mvwprintw(instruction, 3, width / 3, "Press  H  to help");
-            if (getmaxy(stdscr) < 29) {
+            if (getmaxy(stdscr) < height * 2 - 2 + termHeight / 2) {    // if terminal too small
                 mvwprintw(instruction, 4, width / 3, "Expand vertically the terminal to see the help");
             }
         } else {
             mvwprintw(instruction, 1, width / 3, "Premi  L  per cambiare lingua tra Inglese e Italiano");
             mvwprintw(instruction, 2, width / 3, "Premi ESC per uscire");
             mvwprintw(instruction, 3, width / 3, "Premi  H  per l'aiuto");
-            if (getmaxy(stdscr) < 29) {
+            if (getmaxy(stdscr) < height * 2 - 2 + termHeight / 2) {    // termHeight < fineWin=altezzaWin+inizioWin
                 mvwprintw(instruction, 4, width / 3, "Espandi verticalmente il terminale per vedere l'aiuto");
             }
         }
@@ -134,10 +134,11 @@ void Display::checkKB() {
                 help = false;
             }
             break;
+        /*
         case 'u':       // switch unicode
             (unicode ? unicode = false : unicode = true);
             break;
-
+        */
             // TIMER
         case 's':       // start timer
             try {
@@ -154,6 +155,9 @@ void Display::checkKB() {
         case 'r':       // reset timer (it also stops it)
             timer.resetTimer();
             timer.stopTimer();
+            break;
+        case 'w':       // change timer view mode
+            timer.setViewMode(timer.getViewMode() + 1);
             break;
         case KEY_UP:    // +1s
             if (!timer.isRunning()) {
@@ -180,14 +184,14 @@ void Display::checkKB() {
                 timer.setDuration(timer.getDuration() + 60);
             }
             break;
-        case '2':       // +2m
-            if (!timer.isRunning()) {
-                timer.setDuration(timer.getDuration() + 120);
-            }
-            break;
-        case '7':       // -1m
+        case '2':       // -1m
             if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 60);
+            }
+            break;
+        case '5':       // +5m
+            if (!timer.isRunning()) {
+                timer.setDuration(timer.getDuration() + 300);
             }
             break;
         case '6':       // +1h
@@ -195,16 +199,13 @@ void Display::checkKB() {
                 timer.setDuration(timer.getDuration() + 3600);
             }
             break;
-        case '0':       // -1h
+        case '7':       // -1h
             if (!timer.isRunning()) {
                 timer.setDuration(timer.getDuration() - 3600);
             }
             break;
 
             // CHRONO
-        case 'w':       // change timer view mode
-            timer.setViewMode(timer.getViewMode() + 1);
-            break;
         case 'v':       // start chrono
             chrono.startChrono();
             break;
@@ -235,13 +236,13 @@ void Display::printHelp() {
         mvwprintw(instruction, 1, 1, "  INSTRUCTIONS   |      TIMER      |      CLOCK      |   CHRONOMETER   |");
         mvwprintw(instruction, 3, 1, "      start      |        S        |                 |        V        |");
         mvwprintw(instruction, 4, 1, "      stop       |        T        |                 |      SPACE      |");
-        mvwprintw(instruction, 5, 1, "     reset       |        R        |                 |        B        |");
-        mvwprintw(instruction, 6, 1, "  change view    |        W        |        K        |        N        |");
+        mvwprintw(instruction, 5, 1, "      reset      |        R        |                 |        B        |");
+        mvwprintw(instruction, 6, 1, "   change view   |        W        |        K        |        N        |");
     } else {
-        mvwprintw(instruction, 1, 1, "   ISTRUZIONI    |      TIMER      |     OROLOGIO    |    CRONOMETRO   |");
+        mvwprintw(instruction, 1, 1, "   ISTRUZIONI    |      TIMER      |     OROLOGIO    |   CRONOMETRO    |");
         mvwprintw(instruction, 3, 1, "     inizio      |        S        |                 |        V        |");
-        mvwprintw(instruction, 4, 1, "     ferma       |        T        |                 |      SPAZIO     |");
-        mvwprintw(instruction, 5, 1, "    resetta      |        R        |                 |        B        |");
+        mvwprintw(instruction, 4, 1, "      ferma      |        T        |                 |      SPAZIO     |");
+        mvwprintw(instruction, 5, 1, "     resetta     |        R        |                 |        B        |");
         mvwprintw(instruction, 6, 1, "  cambia vista   |        W        |        K        |        N        |");
     }
     mvwprintw(instruction,     7, 1, "     +  1 s      |                 |                 |                 |");
@@ -249,10 +250,10 @@ void Display::printHelp() {
     mvwprintw(instruction,     9, 1, "     + 10 s      |                 |                 |                 |");
     mvwprintw(instruction,    10, 1, "     - 10 s      |                 |                 |                 |");
     mvwprintw(instruction,    11, 1, "     +  1 m      |        1        |                 |                 |");
-    mvwprintw(instruction,    12, 1, "     +  2 m      |        2        |                 |                 |");
-    mvwprintw(instruction,    13, 1, "     -  1 m      |        7        |                 |                 |");
+    mvwprintw(instruction,    12, 1, "     -  1 m      |        2        |                 |                 |");
+    mvwprintw(instruction,    13, 1, "     +  5 m      |        5        |                 |                 |");
     mvwprintw(instruction,    14, 1, "     +  1 h      |        6        |                 |                 |");
-    mvwprintw(instruction,    15, 1, "     -  1 h      |        0        |");
+    mvwprintw(instruction,    15, 1, "     -  1 h      |        7        |");
 
     // BORDERS
     wborder(instruction, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -304,11 +305,11 @@ void Display::printHelp() {
         mvwaddch(instruction, 7, 27, L'\u2191');       // upArrow ↑
         mvwaddch(instruction, 8, 27, L'\u2193');       // downArrow ↓
         mvwaddch(instruction, 9, 27, L'\u2192');       // rightArrow →
-        mvwaddch(instruction, 10, 27, L'\u2190');       // leftArrow ←
+        mvwaddch(instruction, 10, 27, L'\u2190');      // leftArrow ←
     }
 
     // credits
-    mvwprintw(instruction, 15, 43, (!ita ? "Credits: Federico Marra" : "Crediti: Federico Marra"));
+    mvwprintw(instruction, 15, 43, (!ita ? "Credits: Federico Marra " : "Crediti: Federico Marra "));
 
     wrefresh(instruction);
 }

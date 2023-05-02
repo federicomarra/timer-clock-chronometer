@@ -28,11 +28,10 @@ private:
     WINDOW *clockWin = nullptr;
     WINDOW *chronoWin = nullptr;
     WINDOW *instruction = nullptr;
+
     int height = 0, width = 0, termWidth = 0, termHeight = 0, instructionHeight = 0, instructionWidth = 0;
     string tmrTime, chrTime, chrMem, time, date;
-    bool help, ita, unicode;
-
-    bool terminate;
+    bool terminate, help, ita, unicode;
 };
 
 
