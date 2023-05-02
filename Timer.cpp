@@ -1,6 +1,6 @@
 #include "Timer.h"
 #include <chrono>
-#include <math.h>
+#include <cmath>
 #include <functional>
 #include <string>
 

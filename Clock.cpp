@@ -10,7 +10,7 @@ Clock::Clock() {
 }
 
 string Clock::getTime() const {
-    time_t now = time(0);
+    time_t now = time(nullptr);
     tm date = *localtime(&now);
     string s, temp;
     switch (viewMode) {
@@ -41,7 +41,7 @@ string Clock::getTime() const {
 }
 
 string Clock::getDate() const {
-    time_t now = time(0);
+    time_t now = time(nullptr);
     tm date = *localtime(&now);
     string s, temp;
     switch (viewMode) {
@@ -134,7 +134,18 @@ int Clock::getViewMode() const {
     return viewMode;
 }
 
-void Clock::setViewMode(int vm, bool it) {
+void Clock::setViewMode(int vm) {
     viewMode = vm % 3;
+}
+
+bool Clock::isIta() const {
+    return ita;
+}
+
+void Clock::setIta(bool it) {
     ita = it;
+}
+
+void Clock::switchIta(){
+    ita = !ita;
 }

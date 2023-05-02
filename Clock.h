@@ -16,7 +16,13 @@ public:
 
     int getViewMode() const;
 
-    void setViewMode(int vm, bool it);
+    void setViewMode(int vm);
+
+    bool isIta() const;
+
+    void setIta(bool it);
+
+    void switchIta();
 
 private:
     int viewMode;

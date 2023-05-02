@@ -124,7 +124,8 @@ void Display::checkKB() {
             break;
         case 'l':       // switch language eng-ita
             (ita ? ita = false : ita = true);       // if infline
-            clock.setViewMode(clock.getViewMode(), ita);    // update clock language
+            //TODO switch language
+            clock.switchIta();    // update clock language
             break;
         case 'h':       // show help
             if (!help) {
@@ -221,7 +222,7 @@ void Display::checkKB() {
 
             // CLOCK
         case 'k':       // change clock view mode
-            clock.setViewMode(clock.getViewMode() + 1, ita);
+            clock.setViewMode(clock.getViewMode() + 1);
             break;
 
         default:
