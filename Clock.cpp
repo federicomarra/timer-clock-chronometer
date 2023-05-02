@@ -5,7 +5,8 @@
 using namespace std;
 
 Clock::Clock() {
-    viewMode = 2;
+    viewMode = 0;
+    ita = false;
 }
 
 string Clock::getTime() const {
@@ -13,7 +14,7 @@ string Clock::getTime() const {
     tm date = *localtime(&now);
     string s, temp;
     switch (viewMode) {
-        case 2:     // hh:mm:ss
+        case 0:     // vm 0:  hh:mm:ss
             temp = to_string(date.tm_hour);
             s += (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_min);
@@ -21,7 +22,16 @@ string Clock::getTime() const {
             temp = to_string(date.tm_sec);
             s += ":" + (temp.length() == 1 ? ('0' + temp) : temp);
             break;
-        default:    // hh:mm
+
+        case 1:     // vm 1:  hh:mm AM/PM
+            temp = to_string(date.tm_hour % 12);
+            s += (temp.length() == 1 ? ('0' + temp) : temp);
+            temp = to_string(date.tm_min);
+            s += ":" + (temp.length() == 1 ? ('0' + temp) : temp);
+            s += (date.tm_hour < 12 ? " AM" : " PM");
+            break;
+
+        default:    // vm 2:  hh:mm
             temp = to_string(date.tm_hour);
             s += (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_min);
@@ -35,14 +45,7 @@ string Clock::getDate() const {
     tm date = *localtime(&now);
     string s, temp;
     switch (viewMode) {
-        case 1:    // yyyy-mm-dd
-            s += to_string(1900 + date.tm_year);
-            temp = to_string(date.tm_mon + 1);
-            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
-            temp = to_string(date.tm_mday);
-            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
-            break;
-        case 2:   // wdd dd mmm yyyy
+        case 0:   // vm 0:  wdd dd mmm yyyy
             switch (date.tm_wday) {     // week day
                 case 0:
                     s += (ita ? "Dom" : "Sun");
@@ -108,7 +111,16 @@ string Clock::getDate() const {
             }
             s += ' ' + to_string(1900 + date.tm_year);
             break;
-        default:    // dd/mm/yyyy
+
+        case 1:    // vm 1:  yyyy-mm-dd
+            s += to_string(1900 + date.tm_year);
+            temp = to_string(date.tm_mon + 1);
+            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
+            temp = to_string(date.tm_mday);
+            s += "-" + (temp.length() == 1 ? ('0' + temp) : temp);
+            break;
+
+        default:    // vm 2:  dd/mm/yyyy
             temp = to_string(date.tm_mday);
             s += (temp.length() == 1 ? ('0' + temp) : temp);
             temp = to_string(date.tm_mon + 1);
@@ -126,4 +138,3 @@ void Clock::setViewMode(int vm, bool it) {
     viewMode = vm % 3;
     ita = it;
 }
-

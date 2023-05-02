@@ -15,7 +15,7 @@ Timer::Timer() {
     start = steady_clock::now();
     duration = ::duration < int > ::zero();
     running = false;
-    viewMode = 2;
+    viewMode = 0;
 }
 
 const time_point<steady_clock> &Timer::getStart() const {
@@ -90,7 +90,15 @@ string Timer::getDurationString() {
     seconds = seconds - hours * secPerHour - minutes * secPerMin;
 
     switch (viewMode) {
-        case 1:
+        case 0:     // vm 0:  h:mm:ss
+            s = to_string(hours);
+            s += ":";
+            s += ((temp = to_string(minutes)).length() == 2) ? temp : "0" + temp;
+            s += ":";
+            s += ((temp = to_string(seconds)).length() == 2) ? temp : "0" + temp;
+            break;
+
+        case 1:     // vm 1:  h h, mm m, ss s
             if (hours) {
                 s = s + to_string(hours) + " h, ";
             }
@@ -99,14 +107,8 @@ string Timer::getDurationString() {
             }
             s = s + to_string(seconds) + " s";
             break;
-        case 2:
-            s = to_string(hours);
-            s += ":";
-            s += ((temp = to_string(minutes)).length() == 2) ? temp : "0" + temp;
-            s += ":";
-            s += ((temp = to_string(seconds)).length() == 2) ? temp : "0" + temp;
-            break;
-        default:
+
+        default:    // vm 2:  ssssss s
             s = to_string(getDuration()) + " s";
     }
     if (s.length() % 2 == 0) {

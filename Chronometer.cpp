@@ -15,7 +15,7 @@ Chronometer::Chronometer() {
     stored = ::duration<int>::zero();
     running = false;
     memory = ::duration<int>::zero();
-    viewMode = 2;
+    viewMode = 0;
 }
 
 const time_point<steady_clock> &Chronometer::getStart() const {
@@ -89,7 +89,15 @@ string Chronometer::stringify(int deciseconds) const {
     decisecs = deciseconds % 10;
 
     switch (viewMode) {
-        case 1:
+        case 0:     // vm 0:  HH:MM:SS.DS
+            s = to_string(hours);
+            s += ":";
+            s += ((temp = to_string(minutes)).length() == 2) ? temp : "0" + temp;
+            s += ":";
+            s += ((temp = to_string(seconds)).length() == 2) ? temp : "0" + temp;
+            s += "." + to_string(decisecs);
+            break;
+        case 1:     // vm 1:  H h, MM m, SS s
             if (hours) {
                 s += to_string(hours) + " h, ";
             }
@@ -98,18 +106,11 @@ string Chronometer::stringify(int deciseconds) const {
             }
             s += to_string(seconds) + "." + to_string(decisecs) + " s";
             break;
-        case 2:
-            s = to_string(hours);
-            s += ":";
-            s += ((temp = to_string(minutes)).length() == 2) ? temp : "0" + temp;
-            s += ":";
-            s += ((temp = to_string(seconds)).length() == 2) ? temp : "0" + temp;
-            s += "." + to_string(decisecs);
-            break;
-        default:
+
+        default:    // vm 2:  SS.DS s
             s = to_string(deciseconds / 10) + "." + to_string(deciseconds % 10) + " s";
     }
-    if (s.length() % 2 == 0) {
+    if (s.length() % 2 == 0) {      // add a space to keep the length odd if (vm == 1 || vm == 2)
         s.replace(s.find(" s"), 2, "  s");
     }
     return s;
