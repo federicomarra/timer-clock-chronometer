@@ -89,6 +89,6 @@ TEST_F(TimerSuite, StringDuration){
     t.setDuration(60*60+1);
     ASSERT_EQ(t.getDurationString(), "1 h, 0 m, 1 s");
     t.setDuration(60*60+1);
-    t.setViewMode(2);
+    t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "1:00:01");
 }
