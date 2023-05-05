@@ -155,7 +155,6 @@ void Display::checkKB() {
             break;
         case 'r':       // reset timer (it also stops it)
             timer.resetTimer();
-            timer.stopTimer();
             break;
         case 'w':       // change timer view mode
             timer.setViewMode(timer.getViewMode() + 1);

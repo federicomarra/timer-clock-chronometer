@@ -77,8 +77,9 @@ bool Timer::stopTimer() {
     return false;
 }
 
-void Timer::resetTimer() {
+void Timer::resetTimer() {      // it resets but also stops
     start = steady_clock::now();
+    stopTimer();
 }
 
 string Timer::getDurationString() {

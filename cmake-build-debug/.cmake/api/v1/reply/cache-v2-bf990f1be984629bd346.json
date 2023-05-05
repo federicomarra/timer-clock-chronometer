@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+			"value" : "/Applications/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/cmake/mac/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/bin/cpack"
+			"value" : "/Applications/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/cmake/mac/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest"
+			"value" : "/Applications/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/cmake/mac/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -607,7 +607,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/Applications/CLion.app/Contents/bin/ninja/mac/ninja"
+			"value" : "/Applications/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/ninja/mac/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -771,7 +771,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "13.2"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_OSX_SYSROOT",
@@ -935,7 +935,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25"
+			"value" : "/Applications/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1236,42 +1236,6 @@
 			],
 			"type" : "FILEPATH",
 			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/lib/libncurses.tbd"
-		},
-		{
-			"name" : "ElaboratoTimer_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/federico/Documents/GitHub/timer-clock-chronometer/cmake-build-debug"
-		},
-		{
-			"name" : "ElaboratoTimer_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "ElaboratoTimer_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/federico/Documents/GitHub/timer-clock-chronometer"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Curses",

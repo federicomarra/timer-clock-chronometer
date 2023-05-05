@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/libgtestd.a"
+			"path" : "lib/libgtest_maind.a"
 		}
 	],
 	"backtrace" : 3,
@@ -14,6 +14,7 @@
 			"add_library",
 			"cxx_library_with_type",
 			"cxx_library",
+			"target_link_libraries",
 			"include_directories"
 		],
 		"files" : 
@@ -29,7 +30,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 128,
+				"line" : 129,
 				"parent" : 0
 			},
 			{
@@ -47,6 +48,12 @@
 			{
 				"command" : 3,
 				"file" : 1,
+				"line" : 141,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
 				"line" : 118,
 				"parent" : 0
 			}
@@ -58,7 +65,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics"
+					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics"
 				},
 				{
 					"fragment" : " -DGTEST_HAS_PTHREAD=1  "
@@ -70,11 +77,13 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
+					"isSystem" : true,
 					"path" : "/Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest/include"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
+					"isSystem" : true,
 					"path" : "/Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest"
 				}
 			],
@@ -93,9 +102,16 @@
 			]
 		}
 	],
-	"id" : "gtest::@838963ba4e42fda1c95a",
-	"name" : "gtest",
-	"nameOnDisk" : "libgtestd.a",
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 4,
+			"id" : "gtest::@838963ba4e42fda1c95a"
+		}
+	],
+	"id" : "gtest_main::@838963ba4e42fda1c95a",
+	"name" : "gtest_main",
+	"nameOnDisk" : "libgtest_maind.a",
 	"paths" : 
 	{
 		"build" : "test/lib/googletest",
@@ -116,7 +132,7 @@
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "test/lib/googletest/src/gtest-all.cc",
+			"path" : "test/lib/googletest/src/gtest_main.cc",
 			"sourceGroupIndex" : 0
 		}
 	],
