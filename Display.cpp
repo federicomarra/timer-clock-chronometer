@@ -124,7 +124,6 @@ void Display::checkKB() {
             break;
         case 'l':       // switch language eng-ita
             (ita ? ita = false : ita = true);       // if infline
-            //TODO switch language
             clock.switchIta();    // update clock language
             break;
         case 'h':       // show help

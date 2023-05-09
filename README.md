@@ -49,7 +49,7 @@ The timer can be displayed in different formats by pressing `W`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |         Time          |  Time Example   |
+| View Mode |         Time          |  Time example   |
 |:---------:|:---------------------:|:---------------:|
 |   **0**   |     `h`:`mm`:`ss`     |     1:23:45     |
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
@@ -63,7 +63,7 @@ The timer can be displayed in different formats by pressing `K`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |          Date           |       Time        |  Date Example   | Time Example |
+| View Mode |          Date           |       Time        |  Date example   | Time example |
 |:---------:|:-----------------------:|:-----------------:|:---------------:|:------------:|
 |   **0**   | `wdd` `dd` `mmm` `yyyy` |  `hh`:`mm`:`ss`   | Tue 02 May 2023 |   14:03:24   |
 |   **1**   |    `yyyy`-`mm`-`dd`     | `hh`:`mm` AM / PM |   2023-05-02    |   02:03 PM   |
@@ -83,17 +83,17 @@ The timer can be displayed in different formats by pressing `N`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |         Time          |  Time Example   |
+| View Mode |         Time          |  Time example   |
 |:---------:|:---------------------:|:---------------:|
-|   **0**   |  `hh`:`mm`:`ss`.`DS`  |   1:23:45.39    |
+|   **0**   |  `hh`:`mm`:`ss`.`ds`  |   1:23:45.39    |
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
-|   **2**   |     `sssss`.`DS` s    |    5025.39 s    |
+|   **2**   |    `sssss`.`ds` s     |    5025.39 s    |
 
 ## MIT License
 
 MIT License
 
-Copyright (c) 2023 federicomarra
+Copyright (c) 2023 [federicomarra](https://github.com/federicomarra)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
