@@ -1,10 +1,10 @@
 # ninja log v5
 14480	18831	1683245470680660194	test/lib/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	6bd94825660ba19e
-102	4420	1683245448463761608	CMakeFiles/core.dir/Timer.cpp.o	c6a6b60074bcf810
 50	8256	1683245460090678942	test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o	2d46a1a71247d168
+102	4420	1683245448463761608	CMakeFiles/core.dir/Timer.cpp.o	c6a6b60074bcf810
 51	8729	1683245460563709680	test/CMakeFiles/runAllTests.dir/TimerTest.cpp.o	f2bdf65c70dac866
-23107	23243	1683245475110530000	lib/libgtest_maind.a	98b373e598802968
 65	7347	1683245359526499664	CMakeFiles/core.dir/Clock.cpp.o	1e73a1b7b944f250
+23107	23243	1683245475110530000	lib/libgtest_maind.a	98b373e598802968
 4421	4596	1683245448665688000	libcore.a	3ca326897a116c7d
 8257	14480	1683245466325797872	test/CMakeFiles/runAllTests.dir/ChronoTest.cpp.o	635df72a7b80d0bd
 8729	15210	1683245467057812636	test/CMakeFiles/runAllTests.dir/ChronoFixture.cpp.o	4a0e2f5d37c4268b
@@ -16,3 +16,6 @@
 55	7095	1683245359224369949	CMakeFiles/timer-clock-chronometer.dir/main.cpp.o	8e7436f1fce54ec5
 9297	22889	1683245474712156931	test/lib/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	d61bdee2092feb8b
 3978	4256	1683245808457554897	test/runAllTests	8b9ffa57dd2e80b7
+64	4149	1683993882899503082	CMakeFiles/core.dir/Display.cpp.o	8aff2f42de58e547
+4150	4634	1683993883412453000	libcore.a	3ca326897a116c7d
+4634	5668	1683993884439733099	timer-clock-chronometer	f1c646dc2b4c8934
