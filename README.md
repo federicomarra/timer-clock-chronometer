@@ -1,19 +1,33 @@
 # timer-clock-chronometer
 
-![GitHub repo size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer?color=55&label=project%20size&logo=55&logoColor=55%20B)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer?color=20B2AA)](https://github.com/federicomarra/timer-clock-chronometer/tree/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Programmation Laboratory  C++ Unifi
+## Unifi Programmation C++ Laboratory
 
 ##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
 
+# How to run on your Terminal
+
+### Mac and Linux
+1. Download [timer-clock-chronometer](cmake-build-debug%2Ftimer-clock-chronometer) trough terminal and run it.
+2. Open your terminal, using `cd` navigate trough your folders until the one with the file just downloaded.
+3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable (<a href="#" onclick="copyToClipboard('chmod +x timer-clock-chronometer')">(press here to copy</a>).
+4. Open the file that now will be executable.
+
+### Windows
+1. Download the entire [project](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
+2. Unzip it and open the project folder in your C++ IDE.
+3. Build the project pressing `F7` or `Build` button.
+4. Open [timer-clock-chronometer.exe](cmake-build-debug%2Ftimer-clock-chronometer.exe) in the folder named [cmake-build-debug](cmake-build-debug) trough terminal and run it.
+
 # Instructions
 
-Press  `L`  to switch language between English and Italian.
+Press `L` to switch language between English and Italian.
 
 Press `ESC` to exit.
 
-Press `H`  to help.
+Press `H` to help.
 
 | INSTRUCTIONS | TIMER | CLOCK | CHRONOMETER |
 |:------------:|:-----:|:-----:|:-----------:|
@@ -67,7 +81,7 @@ The default format is **0**, but you can switch between these following formats:
 |:---------:|:-----------------------:|:-----------------:|:---------------:|:------------:|
 |   **0**   | `wdd` `dd` `mmm` `yyyy` |  `hh`:`mm`:`ss`   | Tue 02 May 2023 |   14:03:24   |
 |   **1**   |    `yyyy`-`mm`-`dd`     | `hh`:`mm` AM / PM |   2023-05-02    |   02:03 PM   |
-|   **2**   |     `dd`/`mm`/`yyyy`    |     `hh`:`mm`     |   02/05/2023    |    14:03     |
+|   **2**   |    `dd`/`mm`/`yyyy`     |     `hh`:`mm`     |   02/05/2023    |    14:03     |
 
 # Chronometer
 
@@ -93,7 +107,7 @@ The default format is **0**, but you can switch between these following formats:
 
 MIT License
 
-Copyright (c) 2023 [federicomarra](https://github.com/federicomarra)
+Copyright © 2023 [federicomarra](https://github.com/federicomarra)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -112,3 +126,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+<script>
+function copyToClipboard(text) {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  alert("Test copied!");
+}
+</script>
