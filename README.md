@@ -1,30 +1,21 @@
 # timer-clock-chronometer
 
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer?color=20B2AA)](https://github.com/federicomarra/timer-clock-chronometer/tree/master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)
+[![GitHub last release](https://img.shields.io/github/v/release/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/releases)
+[![GitHub last commit](https://img.shields.io/github/last-commit/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/commits/master)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/tree/master)
+[![License: MIT](https://img.shields.io/github/license/federicomarra/timer-clock-chronometer?color=3da639)](https://opensource.org/licenses/MIT)
 
 ## Unifi Programmation C++ Laboratory
 
 ##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
 
-# How to run on your Terminal
+## How to run on your Terminal
 
 ### Mac and Linux
 1. Download [timer-clock-chronometer](cmake-build-debug%2Ftimer-clock-chronometer) trough terminal and run it.
 2. Open your terminal, using `cd` navigate trough your folders until the one with the file just downloaded.
-3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable (<a onclick="copyToClipboard('chmod +x timer-clock-chronometer')">click here to copy</a>).
-
-<script>
-   function copyToClipboard(text) {
-   var tempInput = document.createElement("textarea");
-   tempInput.value = text;
-   document.body.appendChild(tempInput);
-   tempInput.select();
-   document.execCommand("copy");
-   document.body.removeChild(tempInput);
-   }
-   </script>
-
+3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable.
 4. Open the file that now will be executable.
 
 ### Windows
@@ -33,7 +24,7 @@
 3. Build the project pressing `F7` or `Build` button.
 4. Open [timer-clock-chronometer.exe](cmake-build-debug%2Ftimer-clock-chronometer.exe) in the folder named [cmake-build-debug](cmake-build-debug) trough terminal and run it.
 
-# Instructions
+## Instructions
 
 Press `L` to switch language between English and Italian.
 
@@ -57,7 +48,7 @@ Press `H` to help.
 |    +  1 h    |  `6`  |       |             |
 |    -  1 h    |  `7`  |       |             |
 
-# Timer
+## Timer
 
 ### Setting
 
@@ -81,7 +72,7 @@ The default format is **0**, but you can switch between these following formats:
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
 |   **2**   |       `sssss` s       |     5025 s      |
 
-# Clock
+## Clock
 
 ### Formats
 
@@ -95,7 +86,7 @@ The default format is **0**, but you can switch between these following formats:
 |   **1**   |    `yyyy`-`mm`-`dd`     | `hh`:`mm` AM / PM |   2023-05-02    |   02:03 PM   |
 |   **2**   |    `dd`/`mm`/`yyyy`     |     `hh`:`mm`     |   02/05/2023    |    14:03     |
 
-# Chronometer
+## Chronometer
 
 ### Start, Stop, Reset and Lap
 
