@@ -12,7 +12,16 @@
 ### Mac and Linux
 1. Download [timer-clock-chronometer](cmake-build-debug%2Ftimer-clock-chronometer) trough terminal and run it.
 2. Open your terminal, using `cd` navigate trough your folders until the one with the file just downloaded.
-3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable (<a href="#" onclick="copyToClipboard('chmod +x timer-clock-chronometer')">(press here to copy</a>).
+3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable (<a onclick="copyToClipboard("chmod +x timer-clock-chronometer")">click here to copy</a> <script>
+   function copyToClipboard(text) {
+   var tempInput = document.createElement("textarea");
+   tempInput.value = text;
+   document.body.appendChild(tempInput);
+   tempInput.select();
+   document.execCommand("copy");
+   document.body.removeChild(tempInput);
+   }
+   </script>).
 4. Open the file that now will be executable.
 
 ### Windows
@@ -126,16 +135,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-<script>
-function copyToClipboard(text) {
-  var dummy = document.createElement("textarea");
-  document.body.appendChild(dummy);
-  dummy.value = text;
-  dummy.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummy);
-  alert("Test copied!");
-}
-</script>
