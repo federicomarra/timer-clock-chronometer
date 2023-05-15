@@ -7,8 +7,13 @@
 [![License: MIT](https://img.shields.io/github/license/federicomarra/timer-clock-chronometer?color=3da639)](https://opensource.org/licenses/MIT)
 
 ## Unifi Programmation C++ Laboratory
-
 ##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
+## Index
+##### [How to run on your Terminal](#how-to-run-on-your-terminal)
+##### [Instructions](#instructions)
+##### [Timer](#timer)
+##### [Clock](#clock)
+##### [Chronometer](#chronometer)
 
 ## How to run on your Terminal
 
