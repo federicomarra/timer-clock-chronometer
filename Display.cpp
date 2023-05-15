@@ -1,7 +1,7 @@
 #include "Display.h"
 #include <functional>
 #include <ncurses.h>
-#include <locale.h>     // setlocale for Unicode Codify
+// #include <locale.h>     // setlocale for Unicode Codify
 
 Display::Display() {
     timer = Timer();
@@ -99,7 +99,7 @@ void Display::update() {
             mvwprintw(instruction, 1, width / 3, "Premi  L  per cambiare lingua tra Inglese e Italiano");
             mvwprintw(instruction, 2, width / 3, "Premi ESC per uscire");
             mvwprintw(instruction, 3, width / 3, "Premi  H  per l'aiuto");
-            if (getmaxy(stdscr) < height * 2 - 2 + termHeight / 2) {    // termHeight < fineWin=altezzaWin+inizioWin
+            if (getmaxy(stdscr) < height * 2 - 2 + termHeight / 2) {    // termHeight < endWin=heightWin+beginWin
                 mvwprintw(instruction, 4, width / 3, "Espandi verticalmente il terminale per vedere l'aiuto");
             }
         }
@@ -123,8 +123,7 @@ void Display::checkKB() {
             terminate = true;
             break;
         case 'l':       // switch language eng-ita
-            (ita ? ita = false : ita = true);       // if infline
-            clock.switchIta();    // update clock language
+            switchIta();       // update display language
             break;
         case 'h':       // show help
             if (!help) {
@@ -223,6 +222,7 @@ void Display::checkKB() {
             clock.setViewMode(clock.getViewMode() + 1);
             break;
 
+            // if a non-recognized key is pressed
         default:
             break;
     }
@@ -311,4 +311,10 @@ void Display::printHelp() {
     mvwprintw(instruction, 15, 43, (!ita ? "Credits: Federico Marra " : "Crediti: Federico Marra "));
 
     wrefresh(instruction);
+}
+
+
+void Display::switchIta() {
+    ita = !ita;
+    clock.switchIta();      // update clock language
 }

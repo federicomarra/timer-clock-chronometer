@@ -19,6 +19,8 @@ public:
 
     void printHelp();
 
+    void switchIta();
+
 private:
     Timer timer;
     Clock clock;
