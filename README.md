@@ -9,11 +9,11 @@
 ## Unifi Programmation C++ Laboratory
 ##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
 ## Index
-##### [How to run on your Terminal](#how-to-run-on-your-terminal)
-##### [Instructions](#instructions)
-##### [Timer](#timer)
-##### [Clock](#clock)
-##### [Chronometer](#chronometer)
+##### [How to run on your Terminal](#how-to-run-on-your-terminal-1)
+##### [Instructions](#instructions-1)
+##### [Timer](#timer-1)
+##### [Clock](#clock-1)
+##### [Chronometer](#chronometer-1)
 
 ## How to run on your Terminal
 
