@@ -1,24 +1,28 @@
 # timer-clock-chronometer
 
-![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)
+<!-- badges from img.shields.io -->
+[![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)](https://en.cppreference.com/w/)
+[![GTests](https://img.shields.io/badge/tests-14%20passed%2C%200%20failed-important?logo=google&logoColor=white)](test)
 [![GitHub last release](https://img.shields.io/github/v/release/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/releases)
-[![GitHub last commit](https://img.shields.io/github/last-commit/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/commits/master)
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/tree/master)
-[![License: MIT](https://img.shields.io/github/license/federicomarra/timer-clock-chronometer?color=3da639)](https://opensource.org/licenses/MIT)
+[![GitHub last commit](https://img.shields.io/github/last-commit/federicomarra/timer-clock-chronometer?cacheSeconds=3600)](https://github.com/federicomarra/timer-clock-chronometer/commits/master)
+[![GitHub repo size](https://img.shields.io/github/repo-size/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/tree/master)
+[![License MIT](https://img.shields.io/github/license/federicomarra/timer-clock-chronometer?color=3da639)](https://opensource.org/licenses/MIT)
 
 ## Unifi Programmation C++ Laboratory
 ##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
+
 ## Index
 ##### [How to run on your Terminal](#how-to-run-on-your-terminal-1)
 ##### [Instructions](#instructions-1)
 ##### [Timer](#timer-1)
 ##### [Clock](#clock-1)
 ##### [Chronometer](#chronometer-1)
+##### [License](#mit-license)
 
 ## How to run on your Terminal
 
 ### Mac and Linux
-1. Download [timer-clock-chronometer](cmake-build-debug%2Ftimer-clock-chronometer) trough terminal and run it.
+1. Download [timer-clock-chronometer](cmake-build-debug/timer-clock-chronometer) trough terminal and run it.
 2. Open your terminal, using `cd` navigate trough your folders until the one with the file just downloaded.
 3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable.
 4. Open the file that now will be executable.
@@ -27,7 +31,7 @@
 1. Download the entire [project](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
 2. Unzip it and open the project folder in your C++ IDE.
 3. Build the project pressing `F7` or `Build` button.
-4. Open [timer-clock-chronometer.exe](cmake-build-debug%2Ftimer-clock-chronometer.exe) in the folder named [cmake-build-debug](cmake-build-debug) trough terminal and run it.
+4. Open [timer-clock-chronometer.exe](cmake-build-debug/timer-clock-chronometer.exe) in the folder named [cmake-build-debug](cmake-build-debug) trough terminal and run it.
 
 ## Instructions
 
@@ -37,21 +41,21 @@ Press `ESC` to exit.
 
 Press `H` to help.
 
-| INSTRUCTIONS | TIMER | CLOCK | CHRONOMETER |
-|:------------:|:-----:|:-----:|:-----------:|
-|    start     |  `S`  |       |     `V`     |
-|     stop     |  `T`  |       |   `SPACE`   |
-|    reset     |  `R`  |       |     `B`     |
-| change view  |  `W`  |  `K`  |     `N`     |
-|    +  1 s    |  `↑`  |       |             |
-|    -  1 s    |  `↓`  |       |             |
-|    + 10 s    |  `→`  |       |             |
-|    - 10 s    |  `←`  |       |             |
-|    +  1 m    |  `1`  |       |             |
-|    -  1 m    |  `2`  |       |             |
-|    +  5 m    |  `5`  |       |             |
-|    +  1 h    |  `6`  |       |             |
-|    -  1 h    |  `7`  |       |             |
+|  INSTRUCTIONS   | TIMER | CLOCK | CHRONOMETER |
+|:---------------:|:-----:|:-----:|:-----------:|
+|      start      |  `S`  |       |     `V`     |
+|      stop       |  `T`  |       |   `SPACE`   |
+|      reset      |  `R`  |       |     `B`     |
+|   change view   |  `W`  |  `K`  |     `N`     |
+|     +  1 s      |  `↑`  |       |             |
+|     -  1 s      |  `↓`  |       |             |
+|     + 10 s      |  `→`  |       |             |
+|     - 10 s      |  `←`  |       |             |
+|     +  1 m      |  `1`  |       |             |
+|     -  1 m      |  `2`  |       |             |
+|     +  5 m      |  `5`  |       |             |
+|     +  1 h      |  `6`  |       |             |
+|     -  1 h      |  `7`  |       |             |
 
 ## Timer
 
@@ -71,7 +75,7 @@ The timer can be displayed in different formats by pressing `W`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |         Time          |  Time example   |
+| View mode |         Time          |  Time example   |
 |:---------:|:---------------------:|:---------------:|
 |   **0**   |     `h`:`mm`:`ss`     |     1:23:45     |
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
@@ -85,7 +89,7 @@ The timer can be displayed in different formats by pressing `K`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |          Date           |       Time        |  Date example   | Time example |
+| View mode |          Date           |       Time        |  Date example   | Time example |
 |:---------:|:-----------------------:|:-----------------:|:---------------:|:------------:|
 |   **0**   | `wdd` `dd` `mmm` `yyyy` |  `hh`:`mm`:`ss`   | Tue 02 May 2023 |   14:03:24   |
 |   **1**   |    `yyyy`-`mm`-`dd`     | `hh`:`mm` AM / PM |   2023-05-02    |   02:03 PM   |
@@ -105,15 +109,13 @@ The timer can be displayed in different formats by pressing `N`.
 
 The default format is **0**, but you can switch between these following formats:
 
-| View Mode |         Time          |  Time example   |
+| View mode |         Time          |  Time example   |
 |:---------:|:---------------------:|:---------------:|
 |   **0**   |  `hh`:`mm`:`ss`.`ds`  |   1:23:45.39    |
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
 |   **2**   |    `sssss`.`ds` s     |    5025.39 s    |
 
 ## MIT License
-
-MIT License
 
 Copyright © 2023 [federicomarra](https://github.com/federicomarra)
 
