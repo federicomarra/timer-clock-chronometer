@@ -81,14 +81,60 @@ TEST_F(TimerSuite, ResetNonRunningTimer){
 }
 
 TEST_F(TimerSuite, StringDuration){
-    t.setViewMode(1);
+
     t.setDuration(1);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "0:00:01");
+    t.setViewMode(1);
     ASSERT_EQ(t.getDurationString(), "1 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "1 s");
+
     t.setDuration(60+1);
-    ASSERT_EQ(t.getDurationString(), "1 m, 1  s");
-    t.setDuration(60*60+1);
-    ASSERT_EQ(t.getDurationString(), "1 h, 0 m, 1 s");
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "0:01:01");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "1 m, 1 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "61  s");
+
+    t.setDuration(5*60);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "0:05:00");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "5 m, 0 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "300 s");
+
     t.setDuration(60*60+1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "1:00:01");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "1 h, 0 m, 1 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "3601  s");
+
+    t.setDuration(60*60+60+1);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "1:01:01");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "1 h, 1 m, 1 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "3661  s");
+
+    t.setDuration(60*60 + 23*60 + 45);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "1:23:45");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "1 h, 23 m, 45 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "5025  s");
+
+    t.setDuration(60*60*24);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "24:00:00");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "24 h, 0 m, 0 s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "86400 s");
 }

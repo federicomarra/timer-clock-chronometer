@@ -83,7 +83,8 @@ void Timer::resetTimer() {      // it resets but also stops
 }
 
 string Timer::getDurationString() {
-    int hours, minutes, seconds = getDuration();
+    int hours, minutes;
+    int seconds = getDuration();
     string s, temp;
 
     hours = seconds / secPerHour;
@@ -101,19 +102,23 @@ string Timer::getDurationString() {
 
         case 1:     // vm 1:  h h, mm m, ss s
             if (hours) {
-                s = s + to_string(hours) + " h, ";
+                s += to_string(hours) + " h, ";
             }
             if (hours || minutes) {
-                s = s + to_string(minutes) + " m, ";
+                s += to_string(minutes) + " m, ";
             }
-            s = s + to_string(seconds) + " s";
+            s += to_string(seconds) + " s";
+            if (s.length() % 2 == 0 && getDuration() < 60) {
+                s.replace(s.find(" s"), 2, "  s");
+            }
+
             break;
 
         default:    // vm 2:  ssssss s
             s = to_string(getDuration()) + " s";
-    }
-    if (s.length() % 2 == 0) {
-        s.replace(s.find(" s"), 2, "  s");
+            if (s.length() % 2 == 0) {
+                s.replace(s.find(" s"), 2, "  s");
+            }
     }
     return s;
 }
