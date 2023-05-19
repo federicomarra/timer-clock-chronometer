@@ -1,4 +1,4 @@
-# Advanced googletest Topics
+# Advanced Google Test Topics
 
 <!-- GOOGLETEST_CM0015 DO NOT DELETE -->
 
@@ -64,11 +64,11 @@ NOTE: you can only use `FAIL()` in functions that return `void`. See the
 These are for verifying that a piece of code throws (or does not throw) an
 exception of the given type:
 
-Fatal assertion                            | Nonfatal assertion                         | Verifies
------------------------------------------- | ------------------------------------------ | --------
-`ASSERT_THROW(statement, exception_type);` | `EXPECT_THROW(statement, exception_type);` | `statement` throws an exception of the given type
-`ASSERT_ANY_THROW(statement);`             | `EXPECT_ANY_THROW(statement);`             | `statement` throws an exception of any type
-`ASSERT_NO_THROW(statement);`              | `EXPECT_NO_THROW(statement);`              | `statement` doesn't throw any exception
+|               Fatal assertion                |              Nonfatal assertion              |                      Verifies                       |
+|:--------------------------------------------:|:--------------------------------------------:|:---------------------------------------------------:|
+|  `ASSERT_THROW(statement, exception_type);`  |  `EXPECT_THROW(statement, exception_type);`  |  `statement` throws an exception of the given type  |
+|        `ASSERT_ANY_THROW(statement);`        |        `EXPECT_ANY_THROW(statement);`        |     `statement` throws an exception of any type     |
+|        `ASSERT_NO_THROW(statement);`         |        `EXPECT_NO_THROW(statement);`         |       `statement` doesn't throw any exception       |
 
 Examples:
 
@@ -104,13 +104,11 @@ If you already have a function or functor that returns `bool` (or a type that
 can be implicitly converted to `bool`), you can use it in a *predicate
 assertion* to get the function arguments printed for free:
 
-| Fatal assertion      | Nonfatal assertion   | Verifies                    |
-| -------------------- | -------------------- | --------------------------- |
-| `ASSERT_PRED1(pred1, | `EXPECT_PRED1(pred1, | `pred1(val1)` is true       |
-: val1);`              : val1);`              :                             :
-| `ASSERT_PRED2(pred2, | `EXPECT_PRED2(pred2, | `pred2(val1, val2)` is true |
-: val1, val2);`        : val1, val2);`        :                             :
-| `...`                | `...`                | ...                         |
+|          Fatal assertion           |         Nonfatal assertion         |                Verifies                 |
+|:----------------------------------:|:----------------------------------:|:---------------------------------------:|
+|    `ASSERT_PRED1(pred1, val1);`    |    `EXPECT_PRED1(pred1, val1);`    |          `pred1(val1)` is true          |
+| `ASSERT_PRED2(pred2, val1, val2);` | `EXPECT_PRED2(pred2, val1, val2);` |       `pred2(val1, val2)` is true       |
+|               `...`                |  `...`                             |          ...                            |
 
 In the above, `predn` is an `n`-ary predicate function or functor, where `val1`,
 `val2`, ..., and `valn` are its arguments. The assertion succeeds if the
@@ -256,11 +254,11 @@ predicate do not support streaming to `ostream`, you can instead use the
 following *predicate-formatter assertions* to *fully* customize how the message
 is formatted:
 
-Fatal assertion                                  | Nonfatal assertion                               | Verifies
------------------------------------------------- | ------------------------------------------------ | --------
-`ASSERT_PRED_FORMAT1(pred_format1, val1);`       | `EXPECT_PRED_FORMAT1(pred_format1, val1);`       | `pred_format1(val1)` is successful
-`ASSERT_PRED_FORMAT2(pred_format2, val1, val2);` | `EXPECT_PRED_FORMAT2(pred_format2, val1, val2);` | `pred_format2(val1, val2)` is successful
-`...`                                            | `...`                                            | ...
+|                  Fatal assertion                   |                 Nonfatal assertion                 |                  Verifies                  |
+|:--------------------------------------------------:|:--------------------------------------------------:|:------------------------------------------:|
+|     `ASSERT_PRED_FORMAT1(pred_format1, val1);`     |     `EXPECT_PRED_FORMAT1(pred_format1, val1);`     |     `pred_format1(val1)` is successful     |
+|  `ASSERT_PRED_FORMAT2(pred_format2, val1, val2);`  |  `EXPECT_PRED_FORMAT2(pred_format2, val1, val2);`  |  `pred_format2(val1, val2)` is successful  |
+|                       `...`                        |                       `...`                        |                    ...                     |
 
 The difference between this and the previous group of macros is that instead of
 a predicate, `(ASSERT|EXPECT)_PRED_FORMAT*` take a *predicate-formatter*
@@ -340,23 +338,18 @@ want to learn more, see
 
 #### Floating-Point Macros
 
-| Fatal assertion         | Nonfatal assertion      | Verifies                |
-| ----------------------- | ----------------------- | ----------------------- |
-| `ASSERT_FLOAT_EQ(val1,  | `EXPECT_FLOAT_EQ(val1,  | the two `float` values  |
-: val2);`                 : val2);`                 : are almost equal        :
-| `ASSERT_DOUBLE_EQ(val1, | `EXPECT_DOUBLE_EQ(val1, | the two `double` values |
-: val2);`                 : val2);`                 : are almost equal        :
+|         Fatal assertion         |        Nonfatal assertion        |                 Verifies                 |
+|:-------------------------------:|:--------------------------------:|:----------------------------------------:|
+| `ASSERT_FLOAT_EQ(val1, val2);`  | `EXPECT_FLOAT_EQ(val1, val2);`   |  the two `float` values are almost equal |
+| `ASSERT_DOUBLE_EQ(val1, val2);` | `EXPECT_DOUBLE_EQ(val1, val2);`  | the two `double` values are almost equal |
 
 By "almost equal" we mean the values are within 4 ULP's from each other.
 
 The following assertions allow you to choose the acceptable error bound:
 
-| Fatal assertion    | Nonfatal assertion       | Verifies                  |
-| ------------------ | ------------------------ | ------------------------- |
-| `ASSERT_NEAR(val1, | `EXPECT_NEAR(val1, val2, | the difference between    |
-: val2, abs_error);` : abs_error);`             : `val1` and `val2` doesn't :
-:                    :                          : exceed the given absolute :
-:                    :                          : error                     :
+|             Fatal assertion             |           Nonfatal assertion           |                              Verifies                               |
+|:---------------------------------------:|:--------------------------------------:|:-------------------------------------------------------------------:|
+| `ASSERT_NEAR(val1, val2, abs_error);`   |  `EXPECT_NEAR(val1, val2, abs_error);` | the difference between `val1` and `val2` doesn't exceed `abs_error` |
 
 **Availability**: Linux, Windows, Mac.
 
@@ -384,9 +377,9 @@ library of matchers for validating arguments passed to mock objects. A gMock
 *matcher* is basically a predicate that knows how to describe itself. It can be
 used in these assertion macros:
 
-| Fatal assertion                | Nonfatal assertion             | Verifies              |
-| ------------------------------ | ------------------------------ | --------------------- |
-| `ASSERT_THAT(value, matcher);` | `EXPECT_THAT(value, matcher);` | value matches matcher |
+|         Fatal assertion         |       Nonfatal assertion        |        Verifies        |
+|:-------------------------------:|:-------------------------------:|:----------------------:|
+| `ASSERT_THAT(value, matcher);`  | `EXPECT_THAT(value, matcher);`  | value matches matcher  |
 
 For example, `StartsWith(prefix)` is a matcher that matches a string starting
 with `prefix`, and you can write:
@@ -460,10 +453,10 @@ EXPECT_THAT(html_string, MatchesXPath("//a[text()='click here']"));
 
 These assertions test for `HRESULT` success or failure.
 
-Fatal assertion                        | Nonfatal assertion                     | Verifies
--------------------------------------- | -------------------------------------- | --------
-`ASSERT_HRESULT_SUCCEEDED(expression)` | `EXPECT_HRESULT_SUCCEEDED(expression)` | `expression` is a success `HRESULT`
-`ASSERT_HRESULT_FAILED(expression)`    | `EXPECT_HRESULT_FAILED(expression)`    | `expression` is a failure `HRESULT`
+| Fatal assertion                        | Nonfatal assertion                     | Verifies                            |
+|----------------------------------------|----------------------------------------|-------------------------------------|
+| `ASSERT_HRESULT_SUCCEEDED(expression)` | `EXPECT_HRESULT_SUCCEEDED(expression)` | `expression` is a success `HRESULT` |
+| `ASSERT_HRESULT_FAILED(expression)`    | `EXPECT_HRESULT_FAILED(expression)`    | `expression` is a failure `HRESULT` |
 
 The generated output contains the human-readable error message associated with
 the `HRESULT` code returned by `expression`.
@@ -662,11 +655,11 @@ Catching Failures
 
 googletest has the following macros to support death tests:
 
-Fatal assertion                                | Nonfatal assertion                             | Verifies
----------------------------------------------- | ---------------------------------------------- | --------
-`ASSERT_DEATH(statement, regex);`              | `EXPECT_DEATH(statement, regex);`              | `statement` crashes with the given error
-`ASSERT_DEATH_IF_SUPPORTED(statement, regex);` | `EXPECT_DEATH_IF_SUPPORTED(statement, regex);` | if death tests are supported, verifies that `statement` crashes with the given error; otherwise verifies nothing
-`ASSERT_EXIT(statement, predicate, regex);`    | `EXPECT_EXIT(statement, predicate, regex);`    | `statement` exits with the given error, and its exit code matches `predicate`
+| Fatal assertion                                | Nonfatal assertion                             | Verifies                                                                                                         |
+|------------------------------------------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `ASSERT_DEATH(statement, regex);`              | `EXPECT_DEATH(statement, regex);`              | `statement` crashes with the given error                                                                         |
+| `ASSERT_DEATH_IF_SUPPORTED(statement, regex);` | `EXPECT_DEATH_IF_SUPPORTED(statement, regex);` | if death tests are supported, verifies that `statement` crashes with the given error; otherwise verifies nothing |
+| `ASSERT_EXIT(statement, predicate, regex);`    | `EXPECT_EXIT(statement, predicate, regex);`    | `statement` exits with the given error, and its exit code matches `predicate`                                    |
 
 where `statement` is a statement that is expected to cause the process to die,
 `predicate` is a function or function object that evaluates an integer exit
@@ -794,28 +787,28 @@ others. Below is what we do support (`A` denotes a literal character, period
 (`.`), or a single `\\ ` escape sequence; `x` and `y` denote regular
 expressions.):
 
-Expression | Meaning
----------- | --------------------------------------------------------------
-`c`        | matches any literal character `c`
-`\\d`      | matches any decimal digit
-`\\D`      | matches any character that's not a decimal digit
-`\\f`      | matches `\f`
-`\\n`      | matches `\n`
-`\\r`      | matches `\r`
-`\\s`      | matches any ASCII whitespace, including `\n`
-`\\S`      | matches any character that's not a whitespace
-`\\t`      | matches `\t`
-`\\v`      | matches `\v`
-`\\w`      | matches any letter, `_`, or decimal digit
-`\\W`      | matches any character that `\\w` doesn't match
-`\\c`      | matches any literal character `c`, which must be a punctuation
-`.`        | matches any single character except `\n`
-`A?`       | matches 0 or 1 occurrences of `A`
-`A*`       | matches 0 or many occurrences of `A`
-`A+`       | matches 1 or many occurrences of `A`
-`^`        | matches the beginning of a string (not that of each line)
-`$`        | matches the end of a string (not that of each line)
-`xy`       | matches `x` followed by `y`
+| Expression | Meaning                                                        |
+|------------|----------------------------------------------------------------|
+| `c`        | matches any literal character `c`                              |
+| `\\d`      | matches any decimal digit                                      |
+| `\\D`      | matches any character that's not a decimal digit               |
+| `\\f`      | matches `\f`                                                   |
+| `\\n`      | matches `\n`                                                   |
+| `\\r`      | matches `\r`                                                   |
+| `\\s`      | matches any ASCII whitespace, including `\n`                   |
+| `\\S`      | matches any character that's not a whitespace                  |
+| `\\t`      | matches `\t`                                                   |
+| `\\v`      | matches `\v`                                                   |
+| `\\w`      | matches any letter, `_`, or decimal digit                      |
+| `\\W`      | matches any character that `\\w` doesn't match                 |
+| `\\c`      | matches any literal character `c`, which must be a punctuation |
+| `.`        | matches any single character except `\n`                       |
+| `A?`       | matches 0 or 1 occurrences of `A`                              |
+| `A*`       | matches 0 or many occurrences of `A`                           |
+| `A+`       | matches 1 or many occurrences of `A`                           |
+| `^`        | matches the beginning of a string (not that of each line)      |
+| `$`        | matches the end of a string (not that of each line)            |
+| `xy`       | matches `x` followed by `y`                                    |
 
 To help you determine which capability is available on your system, googletest
 defines macros to govern which regular expression it is using. The macros are:
@@ -1084,9 +1077,9 @@ you want.
 Often people want fatal failures to propagate like exceptions. For that
 googletest offers the following macros:
 
-Fatal assertion                       | Nonfatal assertion                    | Verifies
-------------------------------------- | ------------------------------------- | --------
-`ASSERT_NO_FATAL_FAILURE(statement);` | `EXPECT_NO_FATAL_FAILURE(statement);` | `statement` doesn't generate any new fatal failures in the current thread.
+| Fatal assertion                       | Nonfatal assertion                    | Verifies                                                                   |
+|---------------------------------------|---------------------------------------|----------------------------------------------------------------------------|
+| `ASSERT_NO_FATAL_FAILURE(statement);` | `EXPECT_NO_FATAL_FAILURE(statement);` | `statement` doesn't generate any new fatal failures in the current thread. |
 
 Only failures in the thread that executes the assertion are checked to determine
 the result of this type of assertions. If `statement` creates new threads,
