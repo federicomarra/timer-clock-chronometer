@@ -1,6 +1,6 @@
 # timer-clock-chronometer
 
-<!-- badges from img.shields.io -->
+<!-- all the badges are imported from img.shields.io -->
 [![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)](https://en.cppreference.com/w/)
 [![GTests](https://img.shields.io/badge/tests-14%20passed%2C%200%20failed-important?logo=google&logoColor=white)](test)
 [![GitHub last release](https://img.shields.io/github/v/release/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/releases)
@@ -9,22 +9,26 @@
 [![License MIT](https://img.shields.io/github/license/federicomarra/timer-clock-chronometer?color=3da639)](https://opensource.org/licenses/MIT)
 
 ## Unifi Programmation C++ Laboratory
-##### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
+#### C++ Clock program with Timer and Chronometer features, all with multiple visualisation formats.
 
 ## Index
-##### [How to run on your Terminal](#how-to-run-on-your-terminal-1)
-##### [Instructions](#instructions-1)
-##### [Timer](#timer-1)
-##### [Clock](#clock-1)
-##### [Chronometer](#chronometer-1)
-##### [License](#mit-license)
+#### [How to run on your Terminal](#how-to-run-on-your-terminal-1)
+#### [Instructions](#instructions-1)
+#### [Timer](#timer-1)
+#### [Clock](#clock-1)
+#### [Chronometer](#chronometer-1)
+#### [Tests](#unit-tests)
+#### [License](#mit-license)
 
 ## How to run on your Terminal
 
 ### Mac and Linux
 1. Download [timer-clock-chronometer](cmake-build-debug/timer-clock-chronometer) trough terminal and run it.
 2. Open your terminal, using `cd` navigate trough your folders until the one with the file just downloaded.
-3. Run the instruction `chmod +x timer-clock-chronometer` to make the file executable.
+3. Run this instruction to make the file executable:
+```
+chmod +x timer-clock-chronometer
+```
 4. Open the file that now will be executable.
 
 ### Windows
@@ -114,6 +118,84 @@ The default format is **0**, but you can switch between these following formats:
 |   **0**   |  `hh`:`mm`:`ss`.`ds`  |   1:23:45.39    |
 |   **1**   | `h` h, `mm` m, `ss` s | 1 h, 23 m, 45 s |
 |   **2**   |    `sssss`.`ds` s     |    5025.39 s    |
+
+
+## Unit Tests
+
+All the unit tests are in the folder [`test`](test) and are written using [`Google Test library`](https://github.com/google/googletest).
+In the test files we make use of:
+
+|               Fatal assertion               |         Test passed if         |
+|:-------------------------------------------:|:------------------------------:|
+|          `ASSERT_TRUE(condition);`          |       condition == true        |
+|         `ASSERT_FALSE(condition);`          |       condition == false       |
+|       `ASSERT_EQ(actual, expected);`        |       actual == expected       |
+|       `ASSERT_NE(actual, expected);`        |       actual != expected       |
+|          `ASSERT_LT(val1, val2);`           |          val1 < val2           |
+|          `ASSERT_LE(val1, val2);`           |          val1 ≤ val2           |
+|          `ASSERT_GT(val1, val2);`           |          val1 > val2           |
+|          `ASSERT_GE(val1, val2);`           |          val1 ≥ val2           |
+| `ASSERT_NEAR(actual, expected, tolerance);` | actual == expected ± tolerance |
+|    `ASSERT_THROW(function, exception);`     |   function throws exception    |
+
+All the documentation use is in [`primer.md`](test/lib/googletest/docs/primer.md) and [`advanced.md`](test/lib/googletest/docs/advanced.md) files.
+
+
+### TimerTest in [`TimerTest.cpp`](test/TimerTest.cpp)
+
+#### TimerDefaultConstructor
+This test checks if the default constructor initializes correctly to 0 seconds.
+
+#### TimerCorrectWorking
+This test checks if an object of the class `Timer` works correctly with a duration set to 5 seconds.
+
+
+### TimerSuite in [`TimerFixture.cpp`](test/TimerFixture.cpp)
+In the Test Fixture: it's possible to use the same data configuration for multiple tests.
+
+##### TimerDuration
+At first this test checks that the duration can't be set less than or equal to zero seconds (-10:0) and can be set greater to zero seconds (1:10),
+then it checks if the duration can be set correctly to 5 seconds.
+It starts the timer and then try to set the duration to 10 seconds, but the timer can't be set while running so it trows `bad_function_call` exception.
+Then it's checked if after 1 second the duration is less than 5 seconds (set before), and if the duration is greater than 0 seconds.
+
+##### StartTimer
+
+##### StopTimer
+
+##### ResetRunningTimer
+
+##### ResetNonRunningTimer
+
+##### TimerStringDuration
+
+
+### ChronoTest in [`ChronoTest.cpp`](test/ChronoTest.cpp)
+
+
+##### ChronoDefaultConstructor
+
+##### ChronoCorrectWorking
+
+
+### ChronoSuite in [`ChronoFixture.cpp](test/ChronoFixture.cpp)
+
+
+##### ChronoDuration
+
+##### StartChrono
+
+##### StopChrono
+
+##### ResetRunningChrono
+
+##### ResetNonRunningChrono
+
+<!--##### ChronoStringDuration-->
+
+### Run of all the tests in [`runAllTest.cpp`](test/runAllTest.cpp)
+
+In this file we run all the tests of the previous files.
 
 ## MIT License
 
