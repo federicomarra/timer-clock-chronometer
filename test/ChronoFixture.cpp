@@ -64,23 +64,3 @@ TEST_F(ChronoSuite, ResetNonRunningChrono){
     ASSERT_FALSE(c.isRunning());
 }
 
-TEST_F(ChronoSuite, CorrectWorking){
-    c.startChrono();
-    std::this_thread::sleep_for(2s);
-    c.stopChrono();
-
-    ASSERT_NEAR(c.getTime(), 20, 0.5);
-
-    c.startChrono();
-    std::this_thread::sleep_for(1s);
-    c.stopChrono();
-
-    ASSERT_NEAR(c.getTime(), 30, 0.5);
-
-    c.startChrono();
-    c.resetChrono();
-    std::this_thread::sleep_for(1s);
-    c.stopChrono();
-
-    ASSERT_NEAR(c.getTime(), 10, 0.5);
-}

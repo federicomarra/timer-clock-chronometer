@@ -14,7 +14,7 @@ protected:
     Timer t;
 };
 
-TEST_F(TimerSuite, Duration){
+TEST_F(TimerSuite, TimerDuration){
     ASSERT_FALSE(t.setDuration(0));
 
     int testDuration = 5;
@@ -80,7 +80,7 @@ TEST_F(TimerSuite, ResetNonRunningTimer){
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerSuite, StringDuration){
+TEST_F(TimerSuite, TimerStringDuration){
 
     t.setDuration(1);
     t.setViewMode(0);
