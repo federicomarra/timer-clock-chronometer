@@ -226,12 +226,11 @@ start time is greater than the `originalStart` variable.
 ##### 8. TimerStringDuration
 
 This test checks if the duration string obtained from the function `getDurationString()` is equal to the different
-durations in all the three different `viewMode`.
-It is checked for a duration of: `1s`, `10s`, `1m`, `10m`, `1h 1s`, `1h 1m 1s`, `1h 23m 45s`, `24h`.
+durations in all the three different `viewMode`: `0`, `1`and `2`.<br>
+It is checked for these durations: _1s_, _10s_, _1m_, _10m_, _1h 1s_, _1h 1m 1s_, _1h 23m 45s_, _24h_.
 
 
 ### ChronoTest in [`ChronoTest.cpp`](test/ChronoTest.cpp)
-
 
 
 ##### 9. ChronoDefaultConstructor
