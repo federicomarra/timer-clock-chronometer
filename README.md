@@ -219,10 +219,15 @@ timer reset, it also stops).
 
 ##### 7. ResetNonRunningTimer
 
-
+This test checks at first set the timer to 5 seconds, makes it start and stops it after 1 second.
+Then the `originalStart` variable is set to the timer start time. The timer resets and it is checked that the timer
+start time is greater than the `originalStart` variable.
 
 ##### 8. TimerStringDuration
 
+This test checks if the duration string obtained from the function `getDurationString()` is equal to the different
+durations in all the three different `viewMode`.
+It is checked for a duration of: `1s`, `10s`, `1m`, `10m`, `1h 1s`, `1h 1m 1s`, `1h 23m 45s`, `24h`.
 
 
 ### ChronoTest in [`ChronoTest.cpp`](test/ChronoTest.cpp)
