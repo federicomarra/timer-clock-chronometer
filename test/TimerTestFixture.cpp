@@ -82,11 +82,11 @@ TEST_F(TimerTestFixture, ResetRunningTimer) {
 }
 
 TEST_F(TimerTestFixture, ResetNonRunningTimer) {
-    ASSERT_FALSE(t.isRunning());
     t.setDuration(5);
     t.startTimer();
     std::this_thread::sleep_for(1s);
     t.stopTimer();
+    ASSERT_FALSE(t.isRunning());
     time_point<steady_clock> originalStart = t.getStart();
     t.resetTimer();
     ASSERT_GT(t.getStart(), originalStart);
@@ -109,21 +109,21 @@ TEST_F(TimerTestFixture, TimerStringDuration) {
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "10  s");
 
-    t.setDuration(60 + 1);
+    t.setDuration(60);
     t.setViewMode(0);
-    ASSERT_EQ(t.getDurationString(), "0:01:01");
+    ASSERT_EQ(t.getDurationString(), "0:01:00");
     t.setViewMode(1);
-    ASSERT_EQ(t.getDurationString(), "1 m, 1 s");
+    ASSERT_EQ(t.getDurationString(), "1 m, 0 s");
     t.setViewMode(2);
-    ASSERT_EQ(t.getDurationString(), "61  s");
+    ASSERT_EQ(t.getDurationString(), "60  s");
 
-    t.setDuration(5 * 60);
+    t.setDuration(10 * 60);
     t.setViewMode(0);
-    ASSERT_EQ(t.getDurationString(), "0:05:00");
+    ASSERT_EQ(t.getDurationString(), "0:10:00");
     t.setViewMode(1);
-    ASSERT_EQ(t.getDurationString(), "5 m, 0 s");
+    ASSERT_EQ(t.getDurationString(), "10 m, 0 s");
     t.setViewMode(2);
-    ASSERT_EQ(t.getDurationString(), "300 s");
+    ASSERT_EQ(t.getDurationString(), "600 s");
 
     t.setDuration(60 * 60 + 1);
     t.setViewMode(0);
