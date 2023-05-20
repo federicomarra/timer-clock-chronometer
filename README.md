@@ -17,7 +17,7 @@
 #### [Timer](#timer-1)
 #### [Clock](#clock-1)
 #### [Chronometer](#chronometer-1)
-#### [Tests](#unit-tests)
+#### [Tests](#tests-1)
 #### [License](#mit-license)
 
 ## How to run on your Terminal
@@ -120,10 +120,12 @@ The default format is **0**, but you can switch between these following formats:
 |   **2**   |    `sssss`.`ds` s     |    5025.39 s    |
 
 
-## Unit Tests
+## Tests
 
 All the unit tests are in the folder [`test`](test) and are written using [`Google Test library`](https://github.com/google/googletest).
-In the test files we make use of:
+
+In the test files [`TimerTest.cpp`](#timertest-in-timertestcpp), [`TimerFixture.cpp`](#timersuite-in-timerfixturecpp), 
+[`ChronoTest.cpp`](#chronotest-in-chronotestcpp) and [`ChronoFixture.cpp`](#chronosuite-in-chronofixturecpp) files we make use of:
 
 |               Fatal assertion               |         Test passed if         |
 |:-------------------------------------------:|:------------------------------:|
@@ -160,6 +162,8 @@ It starts the timer and then try to set the duration to 10 seconds, but the time
 Then it's checked if after 1 second the duration is less than 5 seconds (set before), and if the duration is greater than 0 seconds.
 
 ##### StartTimer
+This test checks at first that the timer can't start if it hasn't been set before. 
+if the timer can be started correctly and if the duration is greater than 0 seconds.
 
 ##### StopTimer
 
@@ -178,7 +182,7 @@ Then it's checked if after 1 second the duration is less than 5 seconds (set bef
 ##### ChronoCorrectWorking
 
 
-### ChronoSuite in [`ChronoFixture.cpp](test/ChronoFixture.cpp)
+### ChronoSuite in [`ChronoFixture.cpp`](test/ChronoFixture.cpp)
 
 
 ##### ChronoDuration
