@@ -124,8 +124,12 @@ The default format is **0**, but you can switch between these following formats:
 
 All the unit tests are in the folder [`test`](test) and are written using [`Google Test library`](https://github.com/google/googletest).
 
-In the test files [`TimerTest.cpp`](#timertest-in-timertestcpp), [`TimerFixture.cpp`](#timersuite-in-timerfixturecpp), 
-[`ChronoTest.cpp`](#chronotest-in-chronotestcpp) and [`ChronoFixture.cpp`](#chronosuite-in-chronofixturecpp) files we make use of:
+In  the **Test** files we use `TEST(TestSuiteName, TestName)` to make a single test.
+<br>
+Otherwise, in the **Test Fixture** files it is possible to make multiple tests using the same data configuration by `TEST_F(TestFixtureName, TestName)`.
+
+In the test files [`TimerTest.cpp`](#timertest-in-timertestcpp), [`TimerTestFixture.cpp`](#timertestfixture-in-timertestfixturecpp), 
+[`ChronoTest.cpp`](#chronotest-in-chronotestcpp) and [`ChronoTestFixture.cpp`](#chronotestfixture-in-chronotestfixturecpp) files we make use of:
 
 |               Fatal assertion               |         Test passed if         |
 |:-------------------------------------------:|:------------------------------:|
@@ -145,57 +149,54 @@ All the documentation use is in [`primer.md`](test/lib/googletest/docs/primer.md
 
 ### TimerTest in [`TimerTest.cpp`](test/TimerTest.cpp)
 
-#### TimerDefaultConstructor
+#### 1. TimerDefaultConstructor
 This test checks if the default constructor initializes correctly to 0 seconds.
 
-#### TimerCorrectWorking
+#### 2. TimerCorrectWorking
 This test checks if an object of the class `Timer` works correctly with a duration set to 5 seconds.
 
 
-### TimerSuite in [`TimerFixture.cpp`](test/TimerFixture.cpp)
-In the Test Fixture: it's possible to use the same data configuration for multiple tests.
+### TimerTestFixture in [`TimerTestFixture.cpp`](test/TimerTestFixture.cpp)
 
-##### TimerDuration
+##### 3. TimerDuration
 At first this test checks that the duration can't be set less than or equal to zero seconds (-10:0) and can be set greater to zero seconds (1:10),
 then it checks if the duration can be set correctly to 5 seconds.
-It starts the timer and then try to set the duration to 10 seconds, but the timer can't be set while running so it trows `bad_function_call` exception.
-Then it's checked if after 1 second the duration is less than 5 seconds (set before), and if the duration is greater than 0 seconds.
+It starts the timer and then try to set the duration to 10 seconds, but the timer can't be set while running, so it trows `bad_function_call` exception.
+Then it iss checked if after 1 second the duration is less than 5 seconds (set before), and if the duration is greater than 0 seconds.
 
-##### StartTimer
-This test checks at first that the timer can't start if it hasn't been set before. 
-if the timer can be started correctly and if the duration is greater than 0 seconds.
+##### 4. StartTimer
+This test checks at first that the timer can't start if not set before. 
+Then the timer is set to 5 seconds, and the variable `start` is set to hte value of start of the timer.
+After the timer starts, it is checked that the timer is running and that the variable `start` is less than the current time.    
 
-##### StopTimer
+##### 5. StopTimer
 
-##### ResetRunningTimer
+##### 6. ResetRunningTimer
 
-##### ResetNonRunningTimer
+##### 7. ResetNonRunningTimer
 
-##### TimerStringDuration
+##### 8. TimerStringDuration
 
 
 ### ChronoTest in [`ChronoTest.cpp`](test/ChronoTest.cpp)
 
 
-##### ChronoDefaultConstructor
+##### 9. ChronoDefaultConstructor
 
-##### ChronoCorrectWorking
-
-
-### ChronoSuite in [`ChronoFixture.cpp`](test/ChronoFixture.cpp)
+##### 10. ChronoCorrectWorking
 
 
-##### ChronoDuration
+### ChronoTestFixture in [`ChronoTestFixture.cpp`](test/ChronoTestFixture.cpp)
 
-##### StartChrono
 
-##### StopChrono
+##### 11. StartChrono
 
-##### ResetRunningChrono
+##### 12. StopChrono
 
-##### ResetNonRunningChrono
+##### 13. ResetRunningChrono
 
-<!--##### ChronoStringDuration-->
+##### 14. ResetNonRunningChrono
+
 
 ### Run of all the tests in [`runAllTest.cpp`](test/runAllTest.cpp)
 

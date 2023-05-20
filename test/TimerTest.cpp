@@ -1,5 +1,4 @@
 #include  "gtest/gtest.h"
-
 #include "../Timer.h"
 
 TEST(TimerTest, TimerDefaultConstructor) {

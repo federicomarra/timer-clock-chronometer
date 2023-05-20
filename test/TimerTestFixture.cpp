@@ -1,10 +1,9 @@
 #include "gtest/gtest.h"
-
 #include "../Timer.h"
 #include <thread>
 #include <functional>
 
-class TimerSuite : public ::testing::Test {
+class TimerTestFixture : public ::testing::Test {
 
 protected:
     void SetUp() override {
@@ -14,7 +13,7 @@ protected:
     Timer t;
 };
 
-TEST_F(TimerSuite, TimerDuration) {
+TEST_F(TimerTestFixture, TimerDuration) {
     int testDuration;
     for (testDuration = -10; testDuration <= 0; testDuration++) {
         ASSERT_FALSE(t.setDuration(testDuration));       // ASSERT_FALSE(condition) -> OK IF condition == false
@@ -31,12 +30,13 @@ TEST_F(TimerSuite, TimerDuration) {
     t.startTimer();
     std::this_thread::sleep_for(1s);
 
-    ASSERT_THROW(t.setDuration(10), bad_function_call);  // ASSERT_THROW(function, exception) -> OK IF function throws exception
+    ASSERT_THROW(t.setDuration(10),
+                 bad_function_call);  // ASSERT_THROW(function, exception) -> OK IF function throws exception
     ASSERT_LT(t.getDuration(), testDuration);            // ASSERT_LT(val1, val2) -> OK IF val1 < val2
     ASSERT_GT(t.getDuration(), 0);                       // ASSERT_GT(val1, val2) -> OK IF val1 > val2
 }
 
-TEST_F(TimerSuite, StartTimer) {
+TEST_F(TimerTestFixture, StartTimer) {
     ASSERT_THROW(t.startTimer(), bad_function_call);
     t.setDuration(5);
     time_point<steady_clock> start = steady_clock::now();
@@ -48,7 +48,7 @@ TEST_F(TimerSuite, StartTimer) {
     ASSERT_FALSE(t.startTimer());
 }
 
-TEST_F(TimerSuite, StopTimer) {
+TEST_F(TimerTestFixture, StopTimer) {
     t.setDuration(20);
     int initialDuration = t.getDuration();
     t.startTimer();
@@ -66,7 +66,7 @@ TEST_F(TimerSuite, StopTimer) {
     ASSERT_FALSE(t.stopTimer());
 }
 
-TEST_F(TimerSuite, ResetRunningTimer) {
+TEST_F(TimerTestFixture, ResetRunningTimer) {
     t.setDuration(5);
     t.startTimer();
     time_point<steady_clock> originalStart = t.getStart();
@@ -75,7 +75,7 @@ TEST_F(TimerSuite, ResetRunningTimer) {
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerSuite, ResetNonRunningTimer) {
+TEST_F(TimerTestFixture, ResetNonRunningTimer) {
     t.setDuration(5);
     t.startTimer();
     std::this_thread::sleep_for(1s);
@@ -86,8 +86,7 @@ TEST_F(TimerSuite, ResetNonRunningTimer) {
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerSuite, TimerStringDuration) {
-
+TEST_F(TimerTestFixture, TimerStringDuration) {
     t.setDuration(1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "0:00:01");

@@ -1,20 +1,19 @@
 #include "gtest/gtest.h"
-
 #include "../Chronometer.h"
 #include <thread>
 #include <functional>
 
-class ChronoSuite : public ::testing::Test {
+class ChronoTestFixture : public ::testing::Test {
 
 protected:
-    virtual void SetUp() {
+    void SetUp() override {
         c = Chronometer();
     }
 
     Chronometer c;
 };
 
-TEST_F(ChronoSuite, StartChrono){
+TEST_F(ChronoTestFixture, StartChrono){
     time_point<steady_clock> start = steady_clock::now();
 
     ASSERT_TRUE(c.startChrono());
@@ -29,7 +28,7 @@ TEST_F(ChronoSuite, StartChrono){
     ASSERT_NE(c.getTime(), 0);
 }
 
-TEST_F(ChronoSuite, StopChrono){
+TEST_F(ChronoTestFixture, StopChrono){
     c.startChrono();
     std::this_thread::sleep_for(1s);
 
@@ -40,7 +39,7 @@ TEST_F(ChronoSuite, StopChrono){
     ASSERT_EQ(c.getMemoryString(), "---");
 }
 
-TEST_F(ChronoSuite, ResetRunningChrono){
+TEST_F(ChronoTestFixture, ResetRunningChrono){
     c.startChrono();
     std::this_thread::sleep_for(1s);
     time_point<steady_clock> reset = steady_clock::now();
@@ -51,7 +50,7 @@ TEST_F(ChronoSuite, ResetRunningChrono){
     ASSERT_TRUE(c.isRunning());
 }
 
-TEST_F(ChronoSuite, ResetNonRunningChrono){
+TEST_F(ChronoTestFixture, ResetNonRunningChrono){
     c.startChrono();
     std::this_thread::sleep_for(1s);
     c.resetChrono();

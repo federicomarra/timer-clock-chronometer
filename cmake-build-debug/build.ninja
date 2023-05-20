@@ -173,8 +173,8 @@ build test/CMakeFiles/runAllTests.dir/TimerTest.cpp.o: CXX_COMPILER__runAllTests
   OBJECT_DIR = test/CMakeFiles/runAllTests.dir
   OBJECT_FILE_DIR = test/CMakeFiles/runAllTests.dir
 
-build test/CMakeFiles/runAllTests.dir/TimerFixture.cpp.o: CXX_COMPILER__runAllTests_Debug /Users/federico/Documents/GitHub/timer-clock-chronometer/test/TimerFixture.cpp || cmake_object_order_depends_target_runAllTests
-  DEP_FILE = test/CMakeFiles/runAllTests.dir/TimerFixture.cpp.o.d
+build test/CMakeFiles/runAllTests.dir/TimerTestFixture.cpp.o: CXX_COMPILER__runAllTests_Debug /Users/federico/Documents/GitHub/timer-clock-chronometer/test/TimerTestFixture.cpp || cmake_object_order_depends_target_runAllTests
+  DEP_FILE = test/CMakeFiles/runAllTests.dir/TimerTestFixture.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu++17
   INCLUDES = -isystem /Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest/include -isystem /Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest
   OBJECT_DIR = test/CMakeFiles/runAllTests.dir
@@ -187,8 +187,8 @@ build test/CMakeFiles/runAllTests.dir/ChronoTest.cpp.o: CXX_COMPILER__runAllTest
   OBJECT_DIR = test/CMakeFiles/runAllTests.dir
   OBJECT_FILE_DIR = test/CMakeFiles/runAllTests.dir
 
-build test/CMakeFiles/runAllTests.dir/ChronoFixture.cpp.o: CXX_COMPILER__runAllTests_Debug /Users/federico/Documents/GitHub/timer-clock-chronometer/test/ChronoFixture.cpp || cmake_object_order_depends_target_runAllTests
-  DEP_FILE = test/CMakeFiles/runAllTests.dir/ChronoFixture.cpp.o.d
+build test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o: CXX_COMPILER__runAllTests_Debug /Users/federico/Documents/GitHub/timer-clock-chronometer/test/ChronoTestFixture.cpp || cmake_object_order_depends_target_runAllTests
+  DEP_FILE = test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -std=gnu++17
   INCLUDES = -isystem /Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest/include -isystem /Users/federico/Documents/GitHub/timer-clock-chronometer/test/lib/googletest
   OBJECT_DIR = test/CMakeFiles/runAllTests.dir
@@ -202,7 +202,7 @@ build test/CMakeFiles/runAllTests.dir/ChronoFixture.cpp.o: CXX_COMPILER__runAllT
 #############################################
 # Link the executable test/runAllTests
 
-build test/runAllTests: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o test/CMakeFiles/runAllTests.dir/TimerTest.cpp.o test/CMakeFiles/runAllTests.dir/TimerFixture.cpp.o test/CMakeFiles/runAllTests.dir/ChronoTest.cpp.o test/CMakeFiles/runAllTests.dir/ChronoFixture.cpp.o | lib/libgtestd.a lib/libgtest_maind.a libcore.a lib/libgtestd.a || lib/libgtest_maind.a lib/libgtestd.a libcore.a
+build test/runAllTests: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o test/CMakeFiles/runAllTests.dir/TimerTest.cpp.o test/CMakeFiles/runAllTests.dir/TimerTestFixture.cpp.o test/CMakeFiles/runAllTests.dir/ChronoTest.cpp.o test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o | lib/libgtestd.a lib/libgtest_maind.a libcore.a lib/libgtestd.a || lib/libgtest_maind.a lib/libgtestd.a libcore.a
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = lib/libgtestd.a  lib/libgtest_maind.a  libcore.a  lib/libgtestd.a
   OBJECT_DIR = test/CMakeFiles/runAllTests.dir
