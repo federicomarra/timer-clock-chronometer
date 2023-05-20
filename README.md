@@ -1,7 +1,7 @@
 # timer-clock-chronometer
 
 <!-- all the badges are imported from img.shields.io -->
-[![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)](https://en.cppreference.com/w/)
+[![C++](https://img.shields.io/badge/-c++-black?logo=c%2B%2B&)](https://cplusplus.com)
 [![GTests](https://img.shields.io/badge/tests-14%20passed%2C%200%20failed-important?logo=google&logoColor=white)](test)
 [![GitHub last release](https://img.shields.io/github/v/release/federicomarra/timer-clock-chronometer)](https://github.com/federicomarra/timer-clock-chronometer/releases)
 [![GitHub last commit](https://img.shields.io/github/last-commit/federicomarra/timer-clock-chronometer?cacheSeconds=3600)](https://github.com/federicomarra/timer-clock-chronometer/commits/master)
@@ -44,7 +44,7 @@ chmod +x timer-clock-chronometer
 
 ### Windows
 
-1. Download the entire [project](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
+1. Download the entire [repository](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
 2. Unzip it and open the project folder in your C++ IDE.
 3. Build the project pressing `F7` or `Build` button.
 4. Open [timer-clock-chronometer.exe](cmake-build-debug/timer-clock-chronometer.exe) in the folder
@@ -135,6 +135,14 @@ The default format is **0**, but you can switch between these following formats:
 
 ## Tests
 
+|    Test Suite     | Tests passed | Tests failed | Tests total |
+|:-----------------:|:------------:|:------------:|:-----------:|
+|     TimerTest     |      2       |      0       |      2      |
+| TimerTestFixture  |      6       |      0       |      6      |
+|    ChronoTest     |      2       |      0       |      2      |
+| ChronoTestFixture |      4       |      0       |      4      |
+|     **Total**     |      14      |      0       |     14      |
+
 All the unit tests are in the folder [`test`](test) and are written
 using [`Google Test library`](https://github.com/google/googletest).
 
@@ -204,8 +212,10 @@ In the end it is checked that a non-running timer can't be stopped again.
 
 ##### 6. ResetRunningTimer
 
-
-
+This test checks at first set the timer to 5 seconds, makes it start and checks that is running.
+Then the `originalStart` variable is set to the timer start time. The timer is reset and it is checked that the timer
+start time is greater than the `originalStart` variable and that timer is not running anymore (because when a running
+timer reset, it also stops).
 
 ##### 7. ResetNonRunningTimer
 

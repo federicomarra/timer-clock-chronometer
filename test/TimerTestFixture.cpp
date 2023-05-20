@@ -71,6 +71,9 @@ TEST_F(TimerTestFixture, StopTimer) {
 TEST_F(TimerTestFixture, ResetRunningTimer) {
     t.setDuration(5);
     t.startTimer();
+
+    ASSERT_TRUE(t.isRunning());
+
     time_point<steady_clock> originalStart = t.getStart();
     t.resetTimer();
 
@@ -79,13 +82,13 @@ TEST_F(TimerTestFixture, ResetRunningTimer) {
 }
 
 TEST_F(TimerTestFixture, ResetNonRunningTimer) {
+    ASSERT_FALSE(t.isRunning());
     t.setDuration(5);
     t.startTimer();
     std::this_thread::sleep_for(1s);
     t.stopTimer();
     time_point<steady_clock> originalStart = t.getStart();
     t.resetTimer();
-
     ASSERT_GT(t.getStart(), originalStart);
 }
 
