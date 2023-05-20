@@ -9,6 +9,8 @@ TEST(ChronoTest, ChronoDefaultConstructor){
     ASSERT_FALSE(c.isRunning());
     ASSERT_EQ(c.getTime(), 0);
     ASSERT_EQ(c.getMemoryString(), "---");
+    ASSERT_EQ(c.getViewMode(), 0);
+    ASSERT_EQ(c.getTimeString(), "0:00:00.0");
 }
 
 TEST(ChronoTest, ChronoCorrectWorking){

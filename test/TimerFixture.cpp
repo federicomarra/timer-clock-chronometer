@@ -7,27 +7,33 @@
 class TimerSuite : public ::testing::Test {
 
 protected:
-    virtual void SetUp() {
+    void SetUp() override {
         t = Timer();
     }
 
     Timer t;
 };
 
-TEST_F(TimerSuite, TimerDuration){
-    ASSERT_FALSE(t.setDuration(0));
+TEST_F(TimerSuite, TimerDuration) {
+    int testDuration;
+    for (testDuration = -10; testDuration <= 0; testDuration++) {
+        ASSERT_FALSE(t.setDuration(testDuration));       // ASSERT_FALSE(condition) -> OK IF condition == false
+    }
+    for (testDuration = 1; testDuration <= 10; testDuration++) {
+        ASSERT_TRUE(t.setDuration(testDuration));        // ASSERT_TRUE(condition) -> OK IF condition == true
+        ASSERT_EQ(t.getDuration(), testDuration);        // ASSERT_EQ(actual, expected) -> OK IF actual == expected
+    }
 
-    int testDuration = 5;
-
-    ASSERT_TRUE(t.setDuration(testDuration));
+    testDuration = 5;
+    t.setDuration(testDuration);
     ASSERT_EQ(t.getDuration(), testDuration);
 
     t.startTimer();
     std::this_thread::sleep_for(1s);
 
-    ASSERT_THROW(t.setDuration(10), bad_function_call);
-    ASSERT_LT(t.getDuration(), testDuration);
-    ASSERT_GT(t.getDuration(), 0);
+    ASSERT_THROW(t.setDuration(10), bad_function_call);  // ASSERT_THROW(function, exception) -> OK IF function throws exception
+    ASSERT_LT(t.getDuration(), testDuration);            // ASSERT_LT(val1, val2) -> OK IF val1 < val2
+    ASSERT_GT(t.getDuration(), 0);                       // ASSERT_GT(val1, val2) -> OK IF val1 > val2
 }
 
 TEST_F(TimerSuite, StartTimer) {
@@ -37,12 +43,12 @@ TEST_F(TimerSuite, StartTimer) {
 
     ASSERT_TRUE(t.startTimer());
     ASSERT_TRUE(t.isRunning());
-    ASSERT_GE(t.getStart(), start);
-    ASSERT_LE(t.getStart(), steady_clock::now());
+    ASSERT_GE(t.getStart(), start);                      // ASSERT_GE(val1, val2) -> OK IF val1 ≥ val2
+    ASSERT_LE(t.getStart(), steady_clock::now());        // ASSERT_LE(val1, val2) -> OK IF val1 ≤ val2
     ASSERT_FALSE(t.startTimer());
 }
 
-TEST_F(TimerSuite, StopTimer){
+TEST_F(TimerSuite, StopTimer) {
     t.setDuration(20);
     int initialDuration = t.getDuration();
     t.startTimer();
@@ -60,7 +66,7 @@ TEST_F(TimerSuite, StopTimer){
     ASSERT_FALSE(t.stopTimer());
 }
 
-TEST_F(TimerSuite, ResetRunningTimer){
+TEST_F(TimerSuite, ResetRunningTimer) {
     t.setDuration(5);
     t.startTimer();
     time_point<steady_clock> originalStart = t.getStart();
@@ -69,7 +75,7 @@ TEST_F(TimerSuite, ResetRunningTimer){
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerSuite, ResetNonRunningTimer){
+TEST_F(TimerSuite, ResetNonRunningTimer) {
     t.setDuration(5);
     t.startTimer();
     std::this_thread::sleep_for(1s);
@@ -80,7 +86,7 @@ TEST_F(TimerSuite, ResetNonRunningTimer){
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerSuite, TimerStringDuration){
+TEST_F(TimerSuite, TimerStringDuration) {
 
     t.setDuration(1);
     t.setViewMode(0);
@@ -90,7 +96,15 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "1 s");
 
-    t.setDuration(60+1);
+    t.setDuration(10);
+    t.setViewMode(0);
+    ASSERT_EQ(t.getDurationString(), "0:00:10");
+    t.setViewMode(1);
+    ASSERT_EQ(t.getDurationString(), "10  s");
+    t.setViewMode(2);
+    ASSERT_EQ(t.getDurationString(), "10  s");
+
+    t.setDuration(60 + 1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "0:01:01");
     t.setViewMode(1);
@@ -98,7 +112,7 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "61  s");
 
-    t.setDuration(5*60);
+    t.setDuration(5 * 60);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "0:05:00");
     t.setViewMode(1);
@@ -106,7 +120,7 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "300 s");
 
-    t.setDuration(60*60+1);
+    t.setDuration(60 * 60 + 1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "1:00:01");
     t.setViewMode(1);
@@ -114,7 +128,7 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "3601  s");
 
-    t.setDuration(60*60+60+1);
+    t.setDuration(60 * 60 + 60 + 1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "1:01:01");
     t.setViewMode(1);
@@ -122,7 +136,7 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "3661  s");
 
-    t.setDuration(60*60 + 23*60 + 45);
+    t.setDuration(60 * 60 + 23 * 60 + 45);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "1:23:45");
     t.setViewMode(1);
@@ -130,7 +144,7 @@ TEST_F(TimerSuite, TimerStringDuration){
     t.setViewMode(2);
     ASSERT_EQ(t.getDurationString(), "5025  s");
 
-    t.setDuration(60*60*24);
+    t.setDuration(60 * 60 * 24);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "24:00:00");
     t.setViewMode(1);
