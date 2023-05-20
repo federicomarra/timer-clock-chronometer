@@ -3,7 +3,7 @@
 #include <thread>
 #include <functional>
 
-TEST(ChronoTest, ChronoDefaultConstructor){
+TEST(ChronoTest, ChronoDefaultConstructor) {
     Chronometer c;
 
     ASSERT_FALSE(c.isRunning());
@@ -13,7 +13,7 @@ TEST(ChronoTest, ChronoDefaultConstructor){
     ASSERT_EQ(c.getTimeString(), "0:00:00.0");
 }
 
-TEST(ChronoTest, ChronoCorrectWorking){
+TEST(ChronoTest, ChronoCorrectWorking) {
     Chronometer c;
     c.startChrono();
     std::this_thread::sleep_for(2s);

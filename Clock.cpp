@@ -146,6 +146,6 @@ void Clock::setIta(bool it) {
     ita = it;
 }
 
-void Clock::switchIta(){
+void Clock::switchIta() {
     ita = !ita;
 }

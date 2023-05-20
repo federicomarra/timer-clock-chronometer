@@ -49,6 +49,8 @@ TEST_F(TimerTestFixture, StartTimer) {
 }
 
 TEST_F(TimerTestFixture, StopTimer) {
+    ASSERT_FALSE(t.isRunning());
+    ASSERT_FALSE(t.stopTimer());
     t.setDuration(20);
     int initialDuration = t.getDuration();
     t.startTimer();
@@ -73,6 +75,7 @@ TEST_F(TimerTestFixture, ResetRunningTimer) {
     t.resetTimer();
 
     ASSERT_GT(t.getStart(), originalStart);
+    ASSERT_FALSE(t.isRunning());
 }
 
 TEST_F(TimerTestFixture, ResetNonRunningTimer) {
