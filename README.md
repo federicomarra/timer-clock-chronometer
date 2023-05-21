@@ -30,7 +30,7 @@
 
 ## How to run on your Terminal
 
-### Mac and Linux
+### Mac and Linux ![macOS](https://img.shields.io/badge/macOS-000000?&logo=macos) ![Linux](https://img.shields.io/badge/Linux-FCC624?&logo=linux&logoColor=black)
 
 1. Download [timer-clock-chronometer](cmake-build-debug/timer-clock-chronometer) trough terminal and run it.
 2. Open your terminal, using `cd` navigate through your folders until the one with the file just downloaded.
@@ -42,7 +42,7 @@ chmod +x timer-clock-chronometer
 
 4. Open the file that now will be executable.
 
-### Windows
+### Windows ![Windows](https://img.shields.io/badge/Windows-0078D6?&logo=windows&logoColor=white)
 
 1. Download the
    entire [repository](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)

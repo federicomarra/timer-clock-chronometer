@@ -72,7 +72,7 @@ bool Chronometer::stopChrono() {
     if (running) {
         time_point<steady_clock> now = steady_clock::now();
         running = false;
-        stored = stored + duration_cast<milliseconds>(now - start);
+        stored += duration_cast<milliseconds>(now - start);
         return true;
     }
     return false;
