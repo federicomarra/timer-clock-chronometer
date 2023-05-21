@@ -44,7 +44,8 @@ chmod +x timer-clock-chronometer
 
 ### Windows
 
-1. Download the entire [repository](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
+1. Download the
+   entire [repository](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
 2. Unzip it and open the project folder in your C++ IDE.
 3. Build the project pressing `F7` or `Build` button.
 4. Open [timer-clock-chronometer.exe](cmake-build-debug/timer-clock-chronometer.exe) in the folder
@@ -176,12 +177,12 @@ and [`advanced.md`](test/lib/googletest/docs/advanced.md) files.
 
 #### 1. TimerDefaultConstructor
 
-This test checks if the default constructor initializes correctly to 0 seconds, `viewMode` to 0 and the Duration String
-print.
+This test checks if the default constructor initializes correctly `running` to false, `duration` to 0 seconds
+and `viewMode` to 0.
 
 #### 2. TimerCorrectWorking
 
-This test checks if an object of the class `Timer` works correctly with a duration set to 5 seconds.
+This test checks if the timer works correctly with a duration set to 5 seconds.
 
 ### TimerTestFixture in [`TimerTestFixture.cpp`](test/TimerTestFixture.cpp)
 
@@ -229,21 +230,24 @@ This test checks if the duration string obtained from the function `getDurationS
 durations in all the three different `viewMode`: `0`, `1`and `2`.<br>
 It is checked for these durations: _1s_, _10s_, _1m_, _10m_, _1h 1s_, _1h 1m 1s_, _1h 23m 45s_, _24h_.
 
-
 ### ChronoTest in [`ChronoTest.cpp`](test/ChronoTest.cpp)
-
 
 ##### 9. ChronoDefaultConstructor
 
-
+This test checks if the default constructor initializes correctly `running` to false, chronometer time to 0 seconds,
+memory time to 0 and `viewMode` to 0.
 
 ##### 10. ChronoCorrectWorking
 
-
+This test checks if the chronometer works correctly. It is maked start and after 2s stop. Then it checks if the time is
+near 2s (with a tolerance of 1 ds) and memory is empty.<br>
+After it is make start again and stopped after 1s. Then it checks if the time is near 3s (2s + 1s) and memory is still
+empty.<br>
+In the end the chronometer resets and it is checked if the time is 0s and memory is empty. Then it starts and while
+running after 4s it is resetted (if running it laps), and after 2s it is stopped. It is checked if the time is near 2s
+(with a tolerance of 1 ds) and memory is not empty but 4s.
 
 ### ChronoTestFixture in [`ChronoTestFixture.cpp`](test/ChronoTestFixture.cpp)
-
-
 
 ##### 11. StartChrono
 

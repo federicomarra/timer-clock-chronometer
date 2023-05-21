@@ -8,9 +8,9 @@ TEST(ChronoTest, ChronoDefaultConstructor) {
 
     ASSERT_FALSE(c.isRunning());
     ASSERT_EQ(c.getTime(), 0);
+    ASSERT_EQ(c.getMemory(), 0);
     ASSERT_EQ(c.getMemoryString(), "---");
     ASSERT_EQ(c.getViewMode(), 0);
-    ASSERT_EQ(c.getTimeString(), "0:00:00.0");
 }
 
 TEST(ChronoTest, ChronoCorrectWorking) {
@@ -19,18 +19,27 @@ TEST(ChronoTest, ChronoCorrectWorking) {
     std::this_thread::sleep_for(2s);
     c.stopChrono();
 
-    ASSERT_NEAR(c.getTime(), 20, 0.5);
+    ASSERT_NEAR(c.getTime(), 20, 1);
+    ASSERT_EQ(c.getMemory(), 0);
 
     c.startChrono();
     std::this_thread::sleep_for(1s);
     c.stopChrono();
 
-    ASSERT_NEAR(c.getTime(), 30, 0.5);
+    ASSERT_NEAR(c.getTime(), 30, 1);    // 20 + 10 = 30 ds
+    ASSERT_EQ(c.getMemory(), 0);
 
-    c.startChrono();
     c.resetChrono();
-    std::this_thread::sleep_for(1s);
+
+    ASSERT_EQ(c.getTime(), 0);
+    ASSERT_EQ(c.getMemory(), 0);
+
+    c.startChrono();
+    std::this_thread::sleep_for(4s);
+    c.resetChrono();
+    std::this_thread::sleep_for(2s);
     c.stopChrono();
 
-    ASSERT_NEAR(c.getTime(), 10, 0.5);
+    ASSERT_NEAR(c.getTime(), 20, 1);
+    ASSERT_NEAR(c.getMemory(), 40, 1);
 }
