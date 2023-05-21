@@ -21,6 +21,7 @@ TEST_F(ChronoTestFixture, StartChrono) {
     ASSERT_FALSE(c.startChrono());
     ASSERT_GT(c.getStart(), start);
     ASSERT_LT(c.getStart(), steady_clock::now());
+    ASSERT_EQ(c.getMemory(), 0);    // memory empty
     ASSERT_EQ(c.getMemoryString(), "---");
 
     std::this_thread::sleep_for(1s);

@@ -251,7 +251,9 @@ running after 4s it is resetted (if running it laps), and after 2s it is stopped
 
 ##### 11. StartChrono
 
-
+This test checks at first a variable called `start` is set to current time, then when the chronometer is maked start, `running` is true and cannot be started again.<br>
+Then it is checked that the chronometer starting time is greater than the `start` variable and less than the current time, it is also checked if the memory is empty.<br>
+In the end it is checked that chronometer time is non-zero.
 
 ##### 12. StopChrono
 
