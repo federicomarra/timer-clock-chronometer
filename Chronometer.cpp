@@ -36,7 +36,17 @@ int Chronometer::getTime() const {
     return decisecs;
 }
 
-string Chronometer::getMemoryString() const {
+int Chronometer::getMemory() const {            // return memory in deciseconds as an int
+    if (memory != duration<int>::zero()) {
+        int decisecs = (int) round(memory.count() / 100.f);
+        return decisecs;
+    } else {
+        return 0;
+    }
+    return (memory != duration<int>::zero() ? ((int) round(memory.count() / 100.f)) : 0);
+}
+
+string Chronometer::getMemoryString() const {   // return memory in deciseconds as a string
     if (memory != duration<int>::zero()) {
         int decisecs = (int) round(memory.count() / 100.f);
         return stringify(decisecs);

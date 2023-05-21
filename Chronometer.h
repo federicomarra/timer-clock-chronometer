@@ -18,6 +18,8 @@ public:
 
     int getTime() const;
 
+    int getMemory() const;
+
     string getMemoryString() const;
 
     bool isRunning() const;
