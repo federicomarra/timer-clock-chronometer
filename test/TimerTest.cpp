@@ -1,14 +1,14 @@
 #include  "gtest/gtest.h"
 #include "../Timer.h"
 
-TEST(TimerTest, TimerDefaultConstructor) {
+TEST(TimerTest, TimerDefaultConstructor) {      // TEST 1
     Timer t;
     ASSERT_FALSE(t.isRunning());    // ASSERT_FALSE(condition) -> OK IF condition == false
     ASSERT_EQ(t.getDuration(), 0);  // ASSERT_EQ(actual, expected) -> OK IF actual == expected
     ASSERT_EQ(t.getViewMode(), 0);
 }
 
-TEST(TimerTest, TimerCorrectWorking) {
+TEST(TimerTest, TimerCorrectWorking) {          // TEST 2
     Timer t;
     t.setDuration(5);
 

@@ -13,7 +13,7 @@ protected:
     Chronometer c;
 };
 
-TEST_F(ChronoTestFixture, StartChrono) {
+TEST_F(ChronoTestFixture, StartChrono) {                    // TEST 11
     time_point<steady_clock> start = steady_clock::now();
 
     ASSERT_TRUE(c.startChrono());
@@ -29,7 +29,7 @@ TEST_F(ChronoTestFixture, StartChrono) {
     ASSERT_NE(c.getTime(), 0);
 }
 
-TEST_F(ChronoTestFixture, StopChrono) {
+TEST_F(ChronoTestFixture, StopChrono) {                     // TEST 12
     c.startChrono();
     std::this_thread::sleep_for(1s);
 
@@ -40,7 +40,7 @@ TEST_F(ChronoTestFixture, StopChrono) {
     ASSERT_EQ(c.getMemoryString(), "---");
 }
 
-TEST_F(ChronoTestFixture, ResetRunningChrono) {
+TEST_F(ChronoTestFixture, ResetRunningChrono) {             // TEST 13
     c.startChrono();
     std::this_thread::sleep_for(1s);
     time_point<steady_clock> reset = steady_clock::now();
@@ -51,7 +51,7 @@ TEST_F(ChronoTestFixture, ResetRunningChrono) {
     ASSERT_TRUE(c.isRunning());
 }
 
-TEST_F(ChronoTestFixture, ResetNonRunningChrono) {
+TEST_F(ChronoTestFixture, ResetNonRunningChrono) {          // TEST 14
     c.startChrono();
     std::this_thread::sleep_for(1s);
     c.resetChrono();

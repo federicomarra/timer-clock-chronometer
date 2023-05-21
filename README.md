@@ -244,15 +244,17 @@ near 2s (with a tolerance of 1 ds) and memory is empty.<br>
 After it is make start again and stopped after 1s. Then it checks if the time is near 3s (2s + 1s) and memory is still
 empty.<br>
 In the end the chronometer resets and it is checked if the time is 0s and memory is empty. Then it starts and while
-running after 4s it is resetted (if running it laps), and after 2s it is stopped. It is checked if the time is near 2s
+running after 4s it is reset (if running it laps), and after 2s it is stopped. It is checked if the time is near 2s
 (with a tolerance of 1 ds) and memory is not empty but 4s.
 
 ### ChronoTestFixture in [`ChronoTestFixture.cpp`](test/ChronoTestFixture.cpp)
 
 ##### 11. StartChrono
 
-This test checks at first a variable called `start` is set to current time, then when the chronometer is maked start, `running` is true and cannot be started again.<br>
-Then it is checked that the chronometer starting time is greater than the `start` variable and less than the current time, it is also checked if the memory is empty.<br>
+This test checks at first a variable called `start` is set to current time, then when the chronometer is made start,
+`running` is true and cannot be started again.<br>
+Then it is checked that the chronometer starting time is greater than the `start` variable and less than the current
+time, it is also checked if the memory is empty.<br>
 In the end it is checked that chronometer time is non-zero.
 
 ##### 12. StopChrono

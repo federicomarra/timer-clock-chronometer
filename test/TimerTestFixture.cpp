@@ -13,7 +13,7 @@ protected:
     Timer t;
 };
 
-TEST_F(TimerTestFixture, TimerDuration) {
+TEST_F(TimerTestFixture, TimerDuration) {        // TEST 3
     int testDuration;
     for (testDuration = -10; testDuration <= 0; testDuration++) {
         ASSERT_FALSE(t.setDuration(testDuration));       // ASSERT_FALSE(condition) -> OK IF condition == false
@@ -36,7 +36,7 @@ TEST_F(TimerTestFixture, TimerDuration) {
     ASSERT_GT(t.getDuration(), 0);                       // ASSERT_GT(val1, val2) -> OK IF val1 > val2
 }
 
-TEST_F(TimerTestFixture, StartTimer) {
+TEST_F(TimerTestFixture, StartTimer) {              // TEST 4
     ASSERT_THROW(t.startTimer(), bad_function_call);
     t.setDuration(5);
     time_point<steady_clock> start = steady_clock::now();
@@ -48,7 +48,7 @@ TEST_F(TimerTestFixture, StartTimer) {
     ASSERT_FALSE(t.startTimer());
 }
 
-TEST_F(TimerTestFixture, StopTimer) {
+TEST_F(TimerTestFixture, StopTimer) {           // TEST 5
     ASSERT_FALSE(t.isRunning());
     ASSERT_FALSE(t.stopTimer());
     t.setDuration(20);
@@ -68,7 +68,7 @@ TEST_F(TimerTestFixture, StopTimer) {
     ASSERT_FALSE(t.stopTimer());
 }
 
-TEST_F(TimerTestFixture, ResetRunningTimer) {
+TEST_F(TimerTestFixture, ResetRunningTimer) {       // TEST 6
     t.setDuration(5);
     t.startTimer();
 
@@ -81,7 +81,7 @@ TEST_F(TimerTestFixture, ResetRunningTimer) {
     ASSERT_FALSE(t.isRunning());
 }
 
-TEST_F(TimerTestFixture, ResetNonRunningTimer) {
+TEST_F(TimerTestFixture, ResetNonRunningTimer) {    // TEST 7
     t.setDuration(5);
     t.startTimer();
     std::this_thread::sleep_for(1s);
@@ -92,7 +92,7 @@ TEST_F(TimerTestFixture, ResetNonRunningTimer) {
     ASSERT_GT(t.getStart(), originalStart);
 }
 
-TEST_F(TimerTestFixture, TimerStringDuration) {
+TEST_F(TimerTestFixture, TimerStringDuration) {     // TEST 8
     t.setDuration(1);
     t.setViewMode(0);
     ASSERT_EQ(t.getDurationString(), "0:00:01");
