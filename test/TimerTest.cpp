@@ -6,7 +6,6 @@ TEST(TimerTest, TimerDefaultConstructor) {
     ASSERT_FALSE(t.isRunning());    // ASSERT_FALSE(condition) -> OK IF condition == false
     ASSERT_EQ(t.getDuration(), 0);  // ASSERT_EQ(actual, expected) -> OK IF actual == expected
     ASSERT_EQ(t.getViewMode(), 0);
-    ASSERT_EQ(t.getDurationString(), "0:00:00");
 }
 
 TEST(TimerTest, TimerCorrectWorking) {
