@@ -266,16 +266,19 @@ empty.
 
 ##### 13. ResetRunningChrono
 
-This test at first starts the chronometer, then after 1 second `reset` variable is set to current time and the
-chronometer resets.<br>
-Then it is checked that after 2s the chronometer time is 2s and that the memory is not empty, but 1s and that the memory
-string is correctly displayed.<br>
+This test at first starts the chronometer, then after 1 second `reset` variable is set to current time.<br>
+Then the chronometer resets before and after having checked that is running.<br>
+After 2s it is checked that the chronometer time is 2s and that the memory is not empty, but 1s and that the memory
+string is correctly displayed to different view modes.<br>
 In the end it is checked that chronometer starting time is greater than `reset` variable and that the chronometer is
 still running.
 
 ##### 14. ResetNonRunningChrono
 
-
+This test at first starts and reset after 1s, then after 1s it is checked that chronometer time is not 0s and memory is
+not empty.<br>
+Then the chronometer is stopped and it resets before and after checking that is not running.
+In the end it is checked that time is 0s and that the memory is empty.<br>
 
 ### Run of all the tests in [`runAllTest.cpp`](test/runAllTests.cpp)
 

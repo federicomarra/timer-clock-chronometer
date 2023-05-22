@@ -46,7 +46,10 @@ TEST_F(ChronoTestFixture, ResetRunningChrono) {             // TEST 13
     c.startChrono();
     std::this_thread::sleep_for(1s);
     time_point<steady_clock> reset = steady_clock::now();
+
+    ASSERT_TRUE(c.isRunning());
     c.resetChrono();
+    ASSERT_TRUE(c.isRunning());
 
     std::this_thread::sleep_for(2s);
     ASSERT_EQ(c.getTime(), 20);
@@ -59,6 +62,7 @@ TEST_F(ChronoTestFixture, ResetRunningChrono) {             // TEST 13
     ASSERT_EQ(c.getMemoryString(), "1.0 s");
     c.setViewMode(2);
     ASSERT_EQ(c.getMemoryString(), "1.0 s");
+
     ASSERT_GT(c.getStart(), reset);
     ASSERT_TRUE(c.isRunning());
 }
@@ -68,10 +72,17 @@ TEST_F(ChronoTestFixture, ResetNonRunningChrono) {          // TEST 14
     std::this_thread::sleep_for(1s);
     c.resetChrono();
     std::this_thread::sleep_for(1s);
+    ASSERT_NE(c.getTime(), 0);
+    ASSERT_NE(c.getMemory(), 0);
+    ASSERT_NE(c.getMemoryString(), "---");
     c.stopChrono();
+
+    ASSERT_FALSE(c.isRunning());
     c.resetChrono();
+    ASSERT_FALSE(c.isRunning());
 
     ASSERT_EQ(c.getTime(), 0);
+    ASSERT_EQ(c.getMemory(), 0);
     ASSERT_EQ(c.getMemoryString(), "---");
     ASSERT_FALSE(c.isRunning());
 }

@@ -41,3 +41,16 @@
 5331	5574	1684747562337174363	test/runAllTests	71ab1fcd8d2bfe5b
 54	4644	1684747625235976834	test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o	fef51fdc7a08bafb
 4645	4853	1684747625445713474	test/runAllTests	71ab1fcd8d2bfe5b
+63	6087	1684747903701572626	test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o	fef51fdc7a08bafb
+6088	6718	1684747904337107972	test/runAllTests	71ab1fcd8d2bfe5b
+69	5974	1684749002515858832	CMakeFiles/core.dir/Display.cpp.o	8aff2f42de58e547
+5975	6499	1684749003075150000	libcore.a	25aaddc8d9539317
+71	9882	1684749006437011588	test/CMakeFiles/runAllTests.dir/ChronoTestFixture.cpp.o	fef51fdc7a08bafb
+9882	10189	1684749006743195417	test/runAllTests	71ab1fcd8d2bfe5b
+113	3805	1684749011801302950	CMakeFiles/timer-clock-chronometer.dir/main.cpp.o	8e7436f1fce54ec5
+3805	4050	1684749012054152654	timer-clock-chronometer	f1c646dc2b4c8934
+203	6225	1684749073199779521	CMakeFiles/core.dir/Display.cpp.o	8aff2f42de58e547
+6226	6424	1684749073424758000	libcore.a	25aaddc8d9539317
+6424	6770	1684749073745871701	test/runAllTests	71ab1fcd8d2bfe5b
+163	7391	1684749134934267032	test/CMakeFiles/runAllTests.dir/TimerTestFixture.cpp.o	5955e1805e9f6cb5
+7393	7759	1684749135298147422	test/runAllTests	71ab1fcd8d2bfe5b

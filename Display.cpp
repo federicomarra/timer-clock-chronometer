@@ -1,7 +1,7 @@
 #include "Display.h"
 #include <functional>
 #include <ncurses.h>
- #include <locale.h>     // setlocale for Unicode Codify
+#include <locale.h>     // setlocale for Unicode Codify
 
 Display::Display() {
     timer = Timer();
