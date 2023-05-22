@@ -26,7 +26,7 @@ TEST_F(ChronoTestFixture, StartChrono) {                    // TEST 11
 
     std::this_thread::sleep_for(1s);
 
-    ASSERT_NE(c.getTime(), 0);
+    ASSERT_NEAR(c.getTime(), 10, 1);
 }
 
 TEST_F(ChronoTestFixture, StopChrono) {                     // TEST 12
@@ -36,7 +36,9 @@ TEST_F(ChronoTestFixture, StopChrono) {                     // TEST 12
     ASSERT_TRUE(c.stopChrono());
     ASSERT_FALSE(c.stopChrono());
     ASSERT_FALSE(c.isRunning());
-    ASSERT_NE(c.getTime(), 0);
+    ASSERT_GT(c.getTime(), 0);
+    ASSERT_NEAR(c.getTime(), 10, 1);
+    ASSERT_EQ(c.getMemory(), 0);    // memory empty
     ASSERT_EQ(c.getMemoryString(), "---");
 }
 

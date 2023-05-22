@@ -155,7 +155,7 @@ by `TEST_F(TestFixtureName, TestName)`.
 In the test
 files [`TimerTest.cpp`](#timertest-in-timertestcpp), [`TimerTestFixture.cpp`](#timertestfixture-in-timertestfixturecpp),
 [`ChronoTest.cpp`](#chronotest-in-chronotestcpp)
-and [`ChronoTestFixture.cpp`](#chronotestfixture-in-chronotestfixturecpp) files we make use of:
+and [`ChronoTestFixture.cpp`](#chronotestfixture-in-chronotestfixturecpp) we make use of:
 
 |               Fatal assertion               |         Test passed if         |
 |:-------------------------------------------:|:------------------------------:|
@@ -235,11 +235,11 @@ It is checked for these durations: _1s_, _10s_, _1m_, _10m_, _1h 1s_, _1h 1m 1s_
 ##### 9. ChronoDefaultConstructor
 
 This test checks if the default constructor initializes correctly `running` to false, chronometer time to 0 seconds,
-memory time to 0 and `viewMode` to 0.
+empty memory and `viewMode` to 0.
 
 ##### 10. ChronoCorrectWorking
 
-This test checks if the chronometer works correctly. It is maked start and after 2s stop. Then it checks if the time is
+This test checks if the chronometer works correctly. It is made start and after 2s stop. Then it checks if the time is
 near 2s (with a tolerance of 1 ds) and memory is empty.<br>
 After it is make start again and stopped after 1s. Then it checks if the time is near 3s (2s + 1s) and memory is still
 empty.<br>
@@ -251,15 +251,17 @@ running after 4s it is reset (if running it laps), and after 2s it is stopped. I
 
 ##### 11. StartChrono
 
-This test checks at first a variable called `start` is set to current time, then when the chronometer is made start,
+This test at first set `start` variable to current time, then when the chronometer is made start,
 `running` is true and cannot be started again.<br>
 Then it is checked that the chronometer starting time is greater than the `start` variable and less than the current
 time, it is also checked if the memory is empty.<br>
-In the end it is checked that chronometer time is non-zero.
+In the end after 1s it is checked that chronometer time is near 1s with a tolerance of 1ds.
 
 ##### 12. StopChrono
 
-
+This test at first starts the chronometer and then stops it after 1s.<br>
+Then it is checked that the chronometer is not stoppable again and that it is not running anymore.<br>
+In the end after 1s it is checked that chronometer time is near 1s with a tolerance of 1ds, and that the memory is empty.
 
 ##### 13. ResetRunningChrono
 
