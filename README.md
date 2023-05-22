@@ -261,11 +261,17 @@ In the end after 1s it is checked that chronometer time is near 1s with a tolera
 
 This test at first starts the chronometer and then stops it after 1s.<br>
 Then it is checked that the chronometer is not stoppable again and that it is not running anymore.<br>
-In the end after 1s it is checked that chronometer time is near 1s with a tolerance of 1ds, and that the memory is empty.
+In the end after 1s it is checked that chronometer time is near 1s with a tolerance of 1ds, and that the memory is
+empty.
 
 ##### 13. ResetRunningChrono
 
-
+This test at first starts the chronometer, then after 1 second `reset` variable is set to current time and the
+chronometer resets.<br>
+Then it is checked that after 2s the chronometer time is 2s and that the memory is not empty, but 1s and that the memory
+string is correctly displayed.<br>
+In the end it is checked that chronometer starting time is greater than `reset` variable and that the chronometer is
+still running.
 
 ##### 14. ResetNonRunningChrono
 

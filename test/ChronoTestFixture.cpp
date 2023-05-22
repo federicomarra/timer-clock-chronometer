@@ -48,7 +48,17 @@ TEST_F(ChronoTestFixture, ResetRunningChrono) {             // TEST 13
     time_point<steady_clock> reset = steady_clock::now();
     c.resetChrono();
 
-    ASSERT_NE(c.getMemoryString(), "0.0 s");
+    std::this_thread::sleep_for(2s);
+    ASSERT_EQ(c.getTime(), 20);
+    ASSERT_NE(c.getMemory(), 0);
+    ASSERT_NE(c.getMemoryString(), "---");
+    ASSERT_EQ(c.getMemory(), 10);
+    c.setViewMode(0);
+    ASSERT_EQ(c.getMemoryString(), "0:00:01.0");
+    c.setViewMode(1);
+    ASSERT_EQ(c.getMemoryString(), "1.0 s");
+    c.setViewMode(2);
+    ASSERT_EQ(c.getMemoryString(), "1.0 s");
     ASSERT_GT(c.getStart(), reset);
     ASSERT_TRUE(c.isRunning());
 }
