@@ -10,10 +10,10 @@ TEST(TimerTest, TimerDefaultConstructor) {      // TEST 1
 
 TEST(TimerTest, TimerCorrectWorking) {          // TEST 2
     Timer t;
-    t.setDuration(5);
+    ASSERT_TRUE(t.setDuration(5));
 
     time_point<steady_clock> start = steady_clock::now();
-    t.startTimer();
+    ASSERT_TRUE(t.startTimer());
 
     while (t.getDuration() > 0) {}
 

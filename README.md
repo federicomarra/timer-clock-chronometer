@@ -157,18 +157,19 @@ files [`TimerTest.cpp`](#timertest-in-timertestcpp), [`TimerTestFixture.cpp`](#t
 [`ChronoTest.cpp`](#chronotest-in-chronotestcpp)
 and [`ChronoTestFixture.cpp`](#chronotestfixture-in-chronotestfixturecpp) we make use of:
 
-|               Fatal assertion               |         Test passed if         |
-|:-------------------------------------------:|:------------------------------:|
-|          `ASSERT_TRUE(condition);`          |       condition == true        |
-|         `ASSERT_FALSE(condition);`          |       condition == false       |
-|       `ASSERT_EQ(actual, expected);`        |       actual == expected       |
-|       `ASSERT_NE(actual, expected);`        |       actual != expected       |
-|          `ASSERT_LT(val1, val2);`           |          val1 < val2           |
-|          `ASSERT_LE(val1, val2);`           |          val1 ≤ val2           |
-|          `ASSERT_GT(val1, val2);`           |          val1 > val2           |
-|          `ASSERT_GE(val1, val2);`           |          val1 ≥ val2           |
-| `ASSERT_NEAR(actual, expected, tolerance);` | actual == expected ± tolerance |
-|    `ASSERT_THROW(function, exception);`     |   function throws exception    |
+|               Fatal assertion               |             Test passed if             |
+|:-------------------------------------------:|:--------------------------------------:|
+|          `ASSERT_TRUE(condition);`          |           condition == true            |
+|         `ASSERT_FALSE(condition);`          |           condition == false           |
+|       `ASSERT_EQ(actual, expected);`        |           actual == expected           |
+|       `ASSERT_NE(actual, expected);`        |           actual != expected           |
+|          `ASSERT_LT(val1, val2);`           |              val1 < val2               |
+|          `ASSERT_LE(val1, val2);`           |              val1 ≤ val2               |
+|          `ASSERT_GT(val1, val2);`           |              val1 > val2               |
+|          `ASSERT_GE(val1, val2);`           |              val1 ≥ val2               |
+| `ASSERT_NEAR(actual, expected, tolerance);` |     actual == expected ± tolerance     |
+|    `ASSERT_THROW(function, exception);`     |       function throws exception        |
+|        `ASSERT_NO_THROW(function);`         | function does not throws any exception |
 
 All the documentation use is in [`primer.md`](test/lib/googletest/docs/primer.md)
 and [`advanced.md`](test/lib/googletest/docs/advanced.md) files.

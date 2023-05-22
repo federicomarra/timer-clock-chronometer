@@ -24,14 +24,14 @@ TEST_F(TimerTestFixture, TimerDuration) {        // TEST 3
     }
 
     testDuration = 5;
-    t.setDuration(testDuration);
+    ASSERT_TRUE(t.setDuration(testDuration));
+    ASSERT_NO_THROW(t.setDuration(testDuration));        // ASSERT_NO_THROW(function) -> OK IF function does not throw exception
     ASSERT_EQ(t.getDuration(), testDuration);
 
     t.startTimer();
     std::this_thread::sleep_for(1s);
 
-    ASSERT_THROW(t.setDuration(10),
-                 bad_function_call);  // ASSERT_THROW(function, exception) -> OK IF function throws exception
+    ASSERT_THROW(t.setDuration(10), bad_function_call);  // ASSERT_THROW(function, exception) -> OK IF function throws exception
     ASSERT_LT(t.getDuration(), testDuration);            // ASSERT_LT(val1, val2) -> OK IF val1 < val2
     ASSERT_GT(t.getDuration(), 0);                       // ASSERT_GT(val1, val2) -> OK IF val1 > val2
 }
