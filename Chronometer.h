@@ -1,7 +1,6 @@
 #ifndef TIMER_CLOCK_CHRONOMETER_CHRONOMETER_H
 #define TIMER_CLOCK_CHRONOMETER_CHRONOMETER_H
 
-
 #include <chrono>
 #include <string>
 

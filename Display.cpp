@@ -310,6 +310,7 @@ void Display::printHelp() {
     // credits
     mvwprintw(instruction, 15, 43, (!ita ? "Credits: Federico Marra " : "Crediti: Federico Marra "));
 
+    // refresh
     wrefresh(instruction);
 }
 
