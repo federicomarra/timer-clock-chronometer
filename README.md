@@ -36,7 +36,7 @@
 2. Open your terminal, using `cd` navigate through your folders until the one with the file just downloaded.
 3. To make the file executable run this instruction:
 
-```
+```bash
 chmod +x timer-clock-chronometer
 ```
 
@@ -283,7 +283,23 @@ In the end it is checked that time is 0s and that the memory is empty.<br>
 
 ### Run of all the tests in [`runAllTest.cpp`](test/runAllTests.cpp)
 
-In this file we run all the tests of the previous files.
+In this file we run all the tests of the project:
+
+```cpp
+#include "gtest/gtest.h"
+
+int main(int argc, char** argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
+and we can see the results of the tests in the console:
+```
+[----------] Global test environment tear-down
+[==========] 14 tests from 4 test suites ran. (26043 ms total)
+[  PASSED  ] 14 tests.
+```
+
 
 ## MIT License
 

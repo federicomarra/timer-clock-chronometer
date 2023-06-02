@@ -22,7 +22,7 @@ const time_point<steady_clock> &Timer::getStart() const {
     return start;
 }
 
-int Timer::getDuration() const{
+int Timer::getDuration() const {
     if (!running) {
         return (int) round(duration.count() / 1000);
     } else {
