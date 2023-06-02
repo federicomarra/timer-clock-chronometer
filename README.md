@@ -26,13 +26,15 @@
 
 [Tests](#tests)
 
+[How to test on your Terminal](#how-to-test-on-your-terminal)
+
 [License](#mit-license)
 
 ## How to run on your Terminal
 
 ### Mac and Linux ![macOS](https://img.shields.io/badge/macOS-000000?&logo=macos) ![Linux](https://img.shields.io/badge/Linux-FCC624?&logo=linux&logoColor=black)
 
-1. Download [timer-clock-chronometer](cmake-build-debug/timer-clock-chronometer) trough terminal and run it.
+1. Download [timer-clock-chronometer](cmake-build-debug/timer-clock-chronometer).
 2. Open your terminal, using `cd` navigate through your folders until the one with the file just downloaded.
 3. To make the file executable run this instruction:
 
@@ -300,6 +302,27 @@ and we can see the results of the tests in the console:
 [  PASSED  ] 14 tests.
 ```
 
+## How to test on your Terminal
+
+### Mac and Linux ![macOS](https://img.shields.io/badge/macOS-000000?&logo=macos) ![Linux](https://img.shields.io/badge/Linux-FCC624?&logo=linux&logoColor=black)
+
+1. Download [`runAllTests`](cmake-build-debug/test/runAllTests) file.
+2. To make the file executable run this instruction on your terminal in the folder [cmake-build-debug](cmake-build-debug) (navigate using `cd`):
+
+```bash
+chmod +x runAllTests
+```
+
+3. Open the file that now will be executable.
+
+### Windows ![Windows](https://img.shields.io/badge/Windows-0078D6?&logo=windows&logoColor=white)
+
+1. Download the
+   entire [repository](https://github.com/federicomarra/timer-clock-chronometer/archive/refs/heads/master.zip)
+2. Unzip it and open the project folder in your C++ IDE.
+3. Build the project pressing `F7` or `Build` button.
+4. Open [runAllTests.exe](cmake-build-debug/test/runAllTests.exe) in the folder
+   named [cmake-build-debug](cmake-build-debug) trough terminal and run it.
 
 ## MIT License
 
