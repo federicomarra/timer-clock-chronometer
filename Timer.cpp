@@ -22,7 +22,7 @@ const time_point<steady_clock> &Timer::getStart() const {
     return start;
 }
 
-int Timer::getDuration() {
+int Timer::getDuration() const{
     if (!running) {
         return (int) round(duration.count() / 1000);
     } else {
@@ -84,7 +84,7 @@ void Timer::resetTimer() {      // it resets but if running it also stops
     }
 }
 
-string Timer::getDurationString() {
+string Timer::getDurationString() const {
     int hours, minutes;
     int seconds = getDuration();
     string s, temp;

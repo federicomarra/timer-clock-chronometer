@@ -16,9 +16,9 @@ public:
 
     bool setDuration(unsigned int seconds);
 
-    int getDuration();
+    int getDuration() const;
 
-    string getDurationString();
+    string getDurationString() const;
 
     bool isRunning() const;
 
