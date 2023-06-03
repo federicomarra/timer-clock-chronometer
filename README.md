@@ -24,8 +24,6 @@
 
 [Tests](#tests)
 
-[How to test on your Terminal](#how-to-test-on-your-terminal)
-
 [License](#mit-license)
 
 
