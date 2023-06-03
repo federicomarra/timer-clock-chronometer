@@ -26,5 +26,15 @@
 *.a
 *.lib
 
+# Executables
+cmake-build-debug
+*.exe
+*.out
+*.app
+*.ipa
+*.apk
+*.jar
+
+
 #Mac junk files
 .DS_Store
